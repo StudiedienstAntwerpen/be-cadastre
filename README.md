@@ -17,4 +17,4 @@ The scripts are incomplete. Available soon:
 
 Scripts are written in SPSS. You can get a free one month trial version. The programming is quite simple, so it shouldn't be too difficult to translate the scripts into the language of your choice.
 
-At Stad Antwerpen, we convert these statistics into data for our Stad in Cijfers web-portal. Though the techniques are still in development, you can already consult it there. Example: https://stadincijfers.antwerpen.be/databank/?cat_open=Wonen%20en%20ruimte/Kadaster/Eigenaars&var=prcp_eigenaarswoning&view=map&geolevel=wijk&geocompare=antwerpen
+At Stad Antwerpen, we convert these statistics into data for our Stad in Cijfers web-portal. Though the techniques are still in development, you can already [consult it there](https://stadincijfers.antwerpen.be/databank/?cat_open=Wonen%20en%20ruimte/Kadaster/Eigenaars&var=prcp_eigenaarswoning&view=map&geolevel=wijk&geocompare=antwerpen).
