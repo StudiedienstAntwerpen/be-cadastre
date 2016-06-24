@@ -9,8 +9,7 @@ Before you start: you will need:
 - a dataset with a division of your territory of interest. We assume this to be statistical sectors. If you don't have them yet, there's a national open dataset available.
 - a way to convert either DAA (a field in one of the txt's) or your territory devisions into postal codes. You will need those to complete the address of parcels.
 
-The scripts (starting with 00_ etc) assume you have already followed the instructions you will find on the wiki here: 
-https://github.com/joostschouppe/stats4belgium/wiki/Kadaster
+The scripts (starting with 00_ etc) assume you have already followed the instructions you will find  [on the wiki](https://github.com/joostschouppe/stats4belgium/wiki/Kadaster)
 
 The scripts are incomplete. Available soon:
 03: find people who live in their own property
