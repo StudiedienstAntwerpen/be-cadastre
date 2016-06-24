@@ -11,3 +11,5 @@ Before you start: you will need:
 
 The scripts (starting with 00_ etc) assume you have already followed the instructions you will find on the wiki here: 
 https://github.com/joostschouppe/stats4belgium/wiki/Kadaster
+
+Scripts are written in SPSS. You can get a free one month trial version. The programming is quite simple, so it shouldn't be too difficult to translate the scripts into the language of your choice.
