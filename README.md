@@ -12,4 +12,10 @@ Before you start: you will need:
 The scripts (starting with 00_ etc) assume you have already followed the instructions you will find on the wiki here: 
 https://github.com/joostschouppe/stats4belgium/wiki/Kadaster
 
+The scripts are incomplete. Available soon:
+03: find people who live in their own property
+04: turn into a handy dataset of parcels and statistical sectors
+
 Scripts are written in SPSS. You can get a free one month trial version. The programming is quite simple, so it shouldn't be too difficult to translate the scripts into the language of your choice.
+
+At Stad Antwerpen, we convert these statistics into data for our Stad in Cijfers web-portal. Though the techniques are still in development, you can already consult it there. Example: https://stadincijfers.antwerpen.be/databank/?cat_open=Wonen%20en%20ruimte/Kadaster/Eigenaars&var=prcp_eigenaarswoning&view=map&geolevel=wijk&geocompare=antwerpen
