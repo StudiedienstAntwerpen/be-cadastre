@@ -1,7 +1,8 @@
 * Encoding: windows-1252.
 
-* locatie legger.
+* locatie hoofdmap.
 DEFINE basismap () 'G:\OD_IF_AUD\2_04_Statistiek\2_04_01_Data_en_kaarten\kadaster_percelen\kadaster_gebouwdelen_2015\' !ENDDEFINE.
+
 
 * perceeldelen ophalen.
 GET
@@ -48,132 +49,6 @@ Recode #datemp
 INTO postcode_da.
 execute.
 alter type postcode_da (f4.0).
-
-SAVE OUTFILE='\\Antwerpen.local\Doc\OD_IF_AUD\2_04_Statistiek\2_04_01_Data_en_kaarten\kadaster_percelen\kadaster_gebouwdelen_2015\werkbestanden\basisbestand_gebouwdelen.sav'
-  /COMPRESSED.
-
-
-
-
-* KOPPELEN VAN PERCELEN EN EIGENAARS.
-
-* art_nr of daa verenigt een clubje eigenaars.
-* zo'n clubje kan uit 1 tot 4 eigenaars bestaan (in de datadump zoals we die krijgen).
-* dit clubje kan vanalles in bezit hebben.
-* we maken een bestand waarin elk perceeldeel (art_deelnr) even veel keer voorkomt als er eigenaars zijn.
-* eerst maken we vier kopies van de perceeldelen. Bij de eerste kopie doen we alsof hier de eerste eigenaar uit het eigenaarsbestand hoort. Bij de tweede kopie enkel de tweede, enzovoorts.
-
-* maak vier kopies van de perceeldelen.
-DATASET ACTIVATE prc.
-dataset copy match1.
-DATASET ACTIVATE match1.
-match files
-/file=*
-/keep=daa
-sl1 postcode_da capakey art_deelnr na1.
-sort cases daa (a).
-dataset copy match2.
-dataset copy match3.
-dataset copy match4.
-
-* open de eigenaars en uniformiseer variabelen namen.
-DATASET ACTIVATE eigenaars.
-* dit kan je overslaan als je eigenaars nog open stonden.
-GET
-  FILE=
-    '' + legger + 'pe.sav'.
-DATASET NAME eigenaars WINDOW=FRONT.
-
-*uniformiseer.
-rename variables art_nr=daa.
-rename variables pos=eigenaar_volgnummer.
-sort cases daa (a).
-
-* verdeel over vier bestanden volgens volgnummer van de eigenaar.
-DATASET ACTIVATE eigenaars.
-DATASET COPY  eigenaars1.
-DATASET ACTIVATE  eigenaars1.
-FILTER OFF.
-USE ALL.
-SELECT IF (eigenaar_volgnummer = 1).
-EXECUTE.
-
-DATASET ACTIVATE  eigenaars.
-DATASET COPY  eigenaars2.
-DATASET ACTIVATE  eigenaars2.
-FILTER OFF.
-USE ALL.
-SELECT IF (eigenaar_volgnummer = 2).
-EXECUTE.
-
-DATASET ACTIVATE eigenaars.
-DATASET COPY  eigenaars3.
-DATASET ACTIVATE  eigenaars3.
-FILTER OFF.
-USE ALL.
-SELECT IF (eigenaar_volgnummer = 3).
-EXECUTE.
-
-DATASET ACTIVATE eigenaars.
-DATASET COPY  eigenaars4.
-DATASET ACTIVATE  eigenaars4.
-FILTER OFF.
-USE ALL.
-SELECT IF (eigenaar_volgnummer = 4).
-EXECUTE.
-
-* koppel de artikeldelen aan de eigenaars.
-DATASET ACTIVATE match1.
-MATCH FILES /FILE=*
-  /TABLE='eigenaars1'
-  /BY daa.
-EXECUTE.
-DATASET ACTIVATE match2.
-MATCH FILES /FILE=*
-  /TABLE='eigenaars2'
-  /BY daa.
-EXECUTE.
-DATASET ACTIVATE match3.
-MATCH FILES /FILE=*
-  /TABLE='eigenaars3'
-  /BY daa.
-EXECUTE.
-DATASET ACTIVATE match4.
-MATCH FILES /FILE=*
-  /TABLE='eigenaars4'
-  /BY daa.
-EXECUTE.
-
-DATASET CLOSE eigenaars1.
-DATASET CLOSE eigenaars2.
-DATASET CLOSE eigenaars3.
-DATASET CLOSE eigenaars4.
-
-* voeg de artikeldelen weer samen.
-DATASET ACTIVATE match1.
-ADD FILES /FILE=*
-  /FILE='match2'
-  /FILE='match3'
-  /FILE='match4'.
-EXECUTE.
-DATASET CLOSE match2.
-DATASET CLOSE match3.
-DATASET CLOSE match4.
-
-* indien er minder dan vier eigenaars waren, hebben we lege extra rijen gecreeerd. Die halen we nu weer weg.
-FILTER OFF.
-USE ALL.
-SELECT IF (eigenaar_volgnummer > 0).
-EXECUTE.
-dataset close eigenaars.
-dataset name eigenaars.
-
-* dit bestand hebben we voorlopig niet meer nodig.
- SAVE OUTFILE='\\Antwerpen.local\Doc\OD_IF_AUD\2_04_Statistiek\2_04_01_Data_en_kaarten\kadaster_percelen\kadaster_gebouwdelen_2015\werkbestanden\eigenaars_gebouwdeel.sav'
-  /COMPRESSED.
-
-
-
 
 
 * gebiedsindeling ophalen (zie methode GIS).
@@ -277,6 +152,136 @@ value labels postzone_statsec
 2600 'Berchem'
 2610 'Wilrijk'
 2660 'Hoboken'.
+
+SAVE OUTFILE='' + basismap + 'werkbestanden\basisbestand_gebouwdelen.sav'
+  /COMPRESSED.
+
+
+
+
+* KOPPELEN VAN PERCELEN EN EIGENAARS.
+
+* art_nr of daa verenigt een clubje eigenaars.
+* zo'n clubje kan uit 1 tot 4 eigenaars bestaan (in de datadump zoals we die krijgen).
+* dit clubje kan vanalles in bezit hebben.
+* we maken een bestand waarin elk perceeldeel (art_deelnr) even veel keer voorkomt als er eigenaars zijn.
+* eerst maken we vier kopies van de perceeldelen. Bij de eerste kopie doen we alsof hier de eerste eigenaar uit het eigenaarsbestand hoort. Bij de tweede kopie enkel de tweede, enzovoorts.
+
+* maak vier kopies van de perceeldelen.
+DATASET ACTIVATE prc.
+dataset copy match1.
+DATASET ACTIVATE match1.
+match files
+/file=*
+/keep=daa
+sl1 postcode_da postzone_statsec capakey art_deelnr na1.
+sort cases daa (a).
+dataset copy match2.
+dataset copy match3.
+dataset copy match4.
+
+* open de eigenaars en uniformiseer variabelen namen.
+DATASET ACTIVATE eigenaars.
+* dit kan je overslaan als je eigenaars nog open stonden.
+GET
+  FILE=
+    '' + basismap + 'legger\pe.sav'.
+DATASET NAME eigenaars WINDOW=FRONT.
+
+*uniformiseer.
+rename variables art_nr=daa.
+rename variables pos=eigenaar_volgnummer.
+sort cases daa (a).
+
+* verdeel over vier bestanden volgens volgnummer van de eigenaar.
+DATASET ACTIVATE eigenaars.
+DATASET COPY  eigenaars1.
+DATASET ACTIVATE  eigenaars1.
+FILTER OFF.
+USE ALL.
+SELECT IF (eigenaar_volgnummer = 1).
+EXECUTE.
+
+DATASET ACTIVATE  eigenaars.
+DATASET COPY  eigenaars2.
+DATASET ACTIVATE  eigenaars2.
+FILTER OFF.
+USE ALL.
+SELECT IF (eigenaar_volgnummer = 2).
+EXECUTE.
+
+DATASET ACTIVATE eigenaars.
+DATASET COPY  eigenaars3.
+DATASET ACTIVATE  eigenaars3.
+FILTER OFF.
+USE ALL.
+SELECT IF (eigenaar_volgnummer = 3).
+EXECUTE.
+
+DATASET ACTIVATE eigenaars.
+DATASET COPY  eigenaars4.
+DATASET ACTIVATE  eigenaars4.
+FILTER OFF.
+USE ALL.
+SELECT IF (eigenaar_volgnummer = 4).
+EXECUTE.
+
+* koppel de artikeldelen aan de eigenaars.
+DATASET ACTIVATE match1.
+MATCH FILES /FILE=*
+  /TABLE='eigenaars1'
+  /BY daa.
+EXECUTE.
+DATASET ACTIVATE match2.
+MATCH FILES /FILE=*
+  /TABLE='eigenaars2'
+  /BY daa.
+EXECUTE.
+DATASET ACTIVATE match3.
+MATCH FILES /FILE=*
+  /TABLE='eigenaars3'
+  /BY daa.
+EXECUTE.
+DATASET ACTIVATE match4.
+MATCH FILES /FILE=*
+  /TABLE='eigenaars4'
+  /BY daa.
+EXECUTE.
+
+DATASET CLOSE eigenaars1.
+DATASET CLOSE eigenaars2.
+DATASET CLOSE eigenaars3.
+DATASET CLOSE eigenaars4.
+
+* voeg de artikeldelen weer samen.
+DATASET ACTIVATE match1.
+ADD FILES /FILE=*
+  /FILE='match2'
+  /FILE='match3'
+  /FILE='match4'.
+EXECUTE.
+DATASET CLOSE match2.
+DATASET CLOSE match3.
+DATASET CLOSE match4.
+
+* indien er minder dan vier eigenaars waren, hebben we lege extra rijen gecreeerd. Die halen we nu weer weg.
+FILTER OFF.
+USE ALL.
+SELECT IF (eigenaar_volgnummer > 0).
+EXECUTE.
+
+* sluit het oorspronkelijke eigenaarsbestand.
+dataset close eigenaars.
+
+* geef het nieuwe eigenaarsbestand de roepnaam eigenaars.
+dataset name eigenaars.
+* dit bestand hebben we de rest van dit script niet meer nodig.
+ SAVE OUTFILE='' + basismap + 'werkbestanden\eigenaars_gebouwdeel.sav'
+  /COMPRESSED.
+
+
+
+
 
 
 * OPPERVLAKTE IN GIS OPHALEN.
@@ -1729,8 +1734,5 @@ compute KI_onbelastbaar=ki_onbelast_deel1+ki_onbelast_deel2.
 
 
 
-SAVE OUTFILE='' + basismap + ' + 'werkbestanden\werkbestand_gebouwdelen.sav'
+SAVE OUTFILE='' + basismap + 'werkbestanden\werkbestand_gebouwdelen.sav'
   /COMPRESSED.
-
-
-
