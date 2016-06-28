@@ -275,6 +275,33 @@ dataset close eigenaars.
 
 * geef het nieuwe eigenaarsbestand de roepnaam eigenaars.
 dataset name eigenaars.
+
+* soms is er één eigenaarscode die toch voor meerdere eigenaars wordt gebruikt.
+* dit geeft soms problemen. Daarom passen we de eigenaarscode in die gevallen aan.
+SORT CASES BY art_deelnr(A) Eig_code(A).
+MATCH FILES
+  /FILE=*
+  /BY art_deelnr Eig_code
+  /FIRST=PrimaryFirst
+  /LAST=PrimaryLast.
+DO IF (PrimaryFirst).
+COMPUTE  MatchSequence=1-PrimaryLast.
+ELSE.
+COMPUTE  MatchSequence=MatchSequence+1.
+END IF.
+LEAVE  MatchSequence.
+FORMATS  MatchSequence (f7).
+COMPUTE  InDupGrp=MatchSequence>0.
+SORT CASES InDupGrp(D).
+FREQUENCIES VARIABLES=matchsequence.
+EXECUTE.
+* als er waarden groter dan 3 voorkomen, dan moet je de syntax aanpassen.
+if matchsequence=2 eig_code=concat(ltrim(rtrim(eig_code)),"x").
+if matchsequence=3 eig_code=concat(ltrim(rtrim(eig_code)),"y").
+match files
+/file=*
+/drop=PrimaryFirst PrimaryLast MatchSequence InDupGrp.
+
 * dit bestand hebben we de rest van dit script niet meer nodig.
  SAVE OUTFILE='' + basismap + 'werkbestanden\eigenaars_gebouwdeel.sav'
   /COMPRESSED.
