@@ -12,7 +12,7 @@ At Stad Antwerpen, we use the generated data in our Stad in Cijfers web-portal. 
 
 ## Analyzing Cadastre
 
-Before you start: you will need:
+Before you start you will need:
 - the geometry of parcels (you can use either the dataset provided by the Kadaster, or the cleaned version provided by AGIV, if you're in Flanders)
 - the data about parcels. This is provided to municipalities as txt files.
 - a dataset with a division of your territory of interest. We assume this to be statistical sectors. If you don't have them yet, there's a national open dataset available.
