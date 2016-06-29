@@ -9,7 +9,6 @@ The programming is quite simple, so it shouldn't be too difficult to translate t
 At Stad Antwerpen, we use the generated data in our Stad in Cijfers web-portal. Though the techniques are still in development, you can already [consult them there](https://stadincijfers.antwerpen.be/databank/?cat_open=Wonen%20en%20ruimte/Kadaster/Eigenaars&var=prcp_eigenaarswoning&view=map&geolevel=wijk&geocompare=antwerpen).
 
 
-The scripts are writ
 
 ## Analyzing Cadastre
 
@@ -19,7 +18,9 @@ Before you start: you will need:
 - a dataset with a division of your territory of interest. We assume this to be statistical sectors. If you don't have them yet, there's a national open dataset available.
 - a way to convert either DAA (a field in one of the txt's) or your territory devisions into postal codes. You will need those to complete the address of parcels.
 
-The scripts (starting with 00_ etc) assume you have already followed the instructions you will find  [on the wiki](https://github.com/joostschouppe/stats4belgium/wiki/Kadaster)
+The scripts (starting with 00_ etc) assume you know how to use SPSS syntax or have read [this short explanation (Dutch)](https://drive.google.com/file/d/0BzkGrg-2Kbc9aEhhb1UwQklGb2c/view?usp=sharing).
+
+They also assume you have made a table linking parcels to their most likely [statistical sector](http://www.geopunt.be/catalogus/datasetfolder/cb7113a3-58db-498c-89b7-24cb509b002d). This is not straightforward, as parcels might be spread out over two or more sectors. A method taking into account geographical area and CRAB adress positions by parcel and sector is explained in these [step by step instructions (Dutch)](https://drive.google.com/file/d/0BzkGrg-2Kbc9OUlST1F0WFFmRGc/view?usp=sharing)
 
 Scripts:
 - 00: making sure you can count properly at higher geographical aggregations
