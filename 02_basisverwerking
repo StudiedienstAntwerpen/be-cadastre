@@ -1738,28 +1738,33 @@ if art_aard='UITKIJK' nis_niettoegekend=1.
 
 
 
-* Ki & eigenaars.
-* verwerk je bestanden met de syntax 00_ki_eigenaars.sps
 
+* kadastraal inkomen.
+* dit bestaat uit onbelastbaar en belastbaar kadastraal inkomen.
+* deze informatie zit verspreid over vier velden: ri1, ri2 en cod1, cod2.
+
+* zorg dat de ri variabelen numeriek zijn, ze bevatten de waarden.
 alter type ri1 (f8.0).
 
-* cod1 meenemen indien =F, idem voor cod2.
+* de cod variabele omvatten info over belastbaar/onbelastbaar.
 string  cod1_positie2 (a1).
 compute cod1_positie2=char.substr(cod1,2,1).
 string  cod2_positie2 (a1).
 compute cod2_positie2=char.substr(cod2,2,1).
 
+* cod = F, K, P of L betekent belastbaar kadastraal inkomen.
 if cod1_positie2="F" | cod1_positie2="P" | cod1_positie2="K" | cod1_positie2="L" ki_deel1=ri1.
 if cod2_positie2="F" | cod2_positie2="P" | cod2_positie2="K" | cod2_positie2="L" ki_deel2=ri2.
 recode ki_deel1 ki_deel2 (missing=0).
 compute KI_belastbaar=ki_deel1+ki_deel2.
 
+* bij andere letters betreffen de variabelen onbelastbaar inkomen.
 if ~(cod1_positie2="F" | cod1_positie2="P" | cod1_positie2="K" | cod1_positie2="L") ki_onbelast_deel1=ri1.
 if cod2_positie2="F" | cod2_positie2="P" | cod2_positie2="K" | cod2_positie2="L" ki_onbelast_deel2=ri2.
 recode ki_onbelast_deel1 ki_onbelast_deel2 (missing=0).
 compute KI_onbelastbaar=ki_onbelast_deel1+ki_onbelast_deel2.
 
-
+execute.
 
 SAVE OUTFILE='' + basismap + 'werkbestanden\werkbestand_gebouwdelen.sav'
   /COMPRESSED.
