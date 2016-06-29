@@ -675,7 +675,8 @@ freq type_eigenaar.
 * VERDELING EIGENDOM.
 DATASET ACTIVATE eigenaars.
 
-* de variabele eig_deel1 bevat een verdeelsleutel van het eigendom. Daarnaast bevat het ook informatie over verpachting, blote eigendom of volle eigendom.
+
+* de variabele eig_deel bevat een verdeelsleutel van het eigendom. Daarnaast bevat het ook informatie over verpachting, blote eigendom of volle eigendom.
 * aan de hand van die variabele, kunnen we een verdeling maken van hoeveel bezit er bij wat voor eigenaars zit.
 * Om dit te kunnen aggregren naar percelen of hogere niveaus, zullen we die verdeelsleutel toepassen op het Kadastra Inkomen.
 
@@ -698,7 +699,7 @@ if simpel>0 & missing(noemer) noemer=number(char.substr(noemer0,1,CHAR.INDEX(noe
 compute verpachter = CHAR.INDEX(eig_deel1,"VERP",4).
 compute blote_eigenaar = CHAR.INDEX(eig_deel1,"BE ",3).
 compute volle_eigendom = CHAR.INDEX(eig_deel1,"VE ",3).
-
+compute eigenaar_grond = CHAR.INDEX(eig_deel1,"-EIG.GROND ").
 
 * verpachter.
 * we gaan op zoek vanaf 5 tekens na VERP, daar staat mogelijk een breuk.
@@ -728,19 +729,35 @@ if volle_eigendom>0 noemer_vol0=char.substr(teller_vol0,CHAR.INDEX(teller_vol0,"
 if volle_eigendom>0 noemer_vol=number(noemer_vol0,f12.0).
 if volle_eigendom>0 & missing(noemer_vol) noemer_vol=number(char.substr(noemer_vol0,1,CHAR.INDEX(noemer_vol0,"- /",1)-1),f12.0).
 
+* eigenaar grond.
+* dit gaan we enkel meenemen als de rest van het eigendom niet verdeeld kan worden.
+string teller_grond0 (a50).
+if eigenaar_grond>0 teller_grond0=char.substr(eig_deel1,eigenaar_grond+11).
+compute teller_grond=number(CHAR.SUBSTR(teller_grond0,1,CHAR.INDEX(teller_grond0,"/")-1),f12.0).
+if eig_deel1="-EIG.GROND DEEL-" teller_grond=1.
+string noemer_grond0 (a50).
+if eigenaar_grond>0 noemer_grond0=char.substr(teller_grond0,CHAR.INDEX(teller_grond0,"/")+1).
+if eigenaar_grond>0 noemer_grond=number(noemer_grond0,f12.0).
+if eigenaar_grond>0 & missing(noemer_grond) noemer_grond=number(char.substr(noemer_grond0,1,CHAR.INDEX(noemer_grond0,"- /",1)-1),f12.0).
+if eig_deel1="-EIG.GROND DEEL-" noemer_grond=1.
+
+
 recode teller
 teller_verp
 teller_bloot
-teller_vol (sysmis=0).
+teller_vol 
+teller_grond (sysmis=0).
 recode 
 noemer
 noemer_verp
 noemer_bloot
-noemer_vol (sysmis=1).
+noemer_vol 
+noemer_grond (sysmis=1).
 compute breuk=teller/noemer.
 compute breuk_verp=teller_verp/noemer_verp.
 compute breuk_bloot=teller_bloot/noemer_bloot.
 compute breuk_vol=teller_vol/noemer_vol.
+compute breuk_grond=teller_grond/noemer_grond.
 * we nemen enkel verpachters mee, niet pachters (of erfpacht, ERFP). Daarom kunnen we dit allemaal optellen. We beschouwen pachten hier dus niet als "echt" eigenaarsschap.
 compute breuk_verdeling=breuk+breuk_verp+breuk_bloot+breuk_vol.
 execute.
@@ -753,10 +770,17 @@ delete variables noemer0 simpel verpachter blote_eigenaar volle_eigendom.
 if Eig_deel="-BE-" breuk_verdeling=1.
 if Eig_deel="" breuk_verdeling=1.
 
-recode breuk_verdeling (0=sysmis).
+
+AGGREGATE
+  /OUTFILE=* MODE=ADDVARIABLES
+  /BREAK=Art_deelnr
+  /breuk_verdeling_sum=SUM(breuk_verdeling) 
+  /breuk_verdeling_numiss=NUMISS(breuk_verdeling)
+  /totaal_rijen=N.
 
 * beslissen wat te doen met speciale verdeelsleutels.
-* dit zou nog enigszins verfijnd kunnen worden.
+* dit doen we enkel als de rest niets oplevert.
+do if breuk_verdeling_sum<0.01.
 if Eig_deel='-GEBOUW-' breuk_verdeling=1.
 if Eig_deel='-OPSTAL-' breuk_verdeling=0.
 if Eig_deel='-EIG.GROND-' breuk_verdeling=1.
@@ -766,42 +790,73 @@ if Eig_deel='-GROND-' breuk_verdeling=1.
 if Eig_deel='-VG-' breuk_verdeling=0.
 if Eig_deel='-BE-' breuk_verdeling=1.
 if char.index(Eig_deel,'-GEBOUW ')>0 breuk_verdeling=1.
-if char.index(Eig_deel,'-VG ')>0 breuk_verdeling=0.
+if char.index(Eig_deel,'-VG ')>0  breuk_verdeling=0.
+if char.index(Eig_deel,'BE-')>0  breuk_verdeling=1.
+if char.index(Eig_deel,'-BE')>0  breuk_verdeling=1.
 if Eig_deel='-DEEL-' breuk_verdeling=1.
 if Eig_deel='-GROND DEEL-' breuk_verdeling=1.
 if missing(breuk_verdeling) breuk_verdeling=0.
+end if.
 
 
+freq breuk_verdeling_sum.
+* dit kan je gebruiken om exotische gevallen te identificeren.
+* met name sommen groter dan één, sommen gelijk aan nul, perceeldelen zonder geldige waarden.
+
+* als we nog steeds niets hebben, dan gebruiken we eigenaarschap van de grond.
+DELETE VARIABLES breuk_verdeling_sum
+breuk_verdeling_numiss
+totaal_rijen.
 AGGREGATE
   /OUTFILE=* MODE=ADDVARIABLES
   /BREAK=Art_deelnr
   /breuk_verdeling_sum=SUM(breuk_verdeling) 
   /breuk_verdeling_numiss=NUMISS(breuk_verdeling)
   /totaal_rijen=N.
-* dit kan je gebruiken om exotische gevallen te identificeren.
-* met name sommen groter dan één, sommen gelijk aan nul, perceeldelen zonder geldige waarden.
+if breuk_verdeling_sum < 0.01 breuk_verdeling=breuk_grond.
+EXECUTE.
+
+* wat nu nog overblijft analyseren we niet verder.
+* we verdelen dit eigendom gewoon over iedereen die in het eigenaarsbestand zit.
+DELETE VARIABLES breuk_verdeling_sum
+breuk_verdeling_numiss
+totaal_rijen.
+AGGREGATE
+  /OUTFILE=* MODE=ADDVARIABLES
+  /BREAK=Art_deelnr
+  /breuk_verdeling_sum=SUM(breuk_verdeling) 
+  /breuk_verdeling_numiss=NUMISS(breuk_verdeling)
+  /totaal_rijen=N.
+if breuk_verdeling_sum < 0.01 breuk_verdeling=1/totaal_rijen.
 
 * te grote waarden corrigeren we hier
-* normaal gezien is breuk_verdeling_sum altijd = 1 dus doet dit niets.
+* normaal gezien is breuk_verdeling_sum altijd = 1 dus dan doet dit niets.
 * waar het groter is, herleidt het de breuk verdeling waarden zo dat de som toch 1 wordt.
-compute breuk_verdeling=breuk_verdeling/breuk_verdeling_sum.
+if breuk_verdeling_sum >= 0.01 breuk_verdeling=breuk_verdeling/breuk_verdeling_sum.
 
 EXECUTE.
+DELETE VARIABLES breuk_verdeling_sum
+breuk_verdeling_numiss
+totaal_rijen.
+
 delete variables teller
 noemer
+eigenaar_grond
 teller_verp
 noemer_verp
 teller_bloot
 noemer_bloot
 teller_vol
 noemer_vol
+teller_grond0
+teller_grond
+noemer_grond0
+noemer_grond
 breuk
 breuk_verp
 breuk_bloot
 breuk_vol
-breuk_verdeling_sum
-breuk_verdeling_numiss
-totaal_rijen.
+breuk_grond.
 
 * we voegen het kadastraal inkomen (KI) toe op basis van de prc tabel.
 dataset activate prc.
