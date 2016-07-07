@@ -324,7 +324,7 @@ match files
 /file=*
 /keep=capakey oppervl.
 sort cases capakey (a).
-rename variables oppervl=oppervlakte_gis.
+rename variables oppervl=oppervlakte_perceel_gis.
 alter type capakey (a17).
 dataset activate prc.
 *sort cases capakey (a).
