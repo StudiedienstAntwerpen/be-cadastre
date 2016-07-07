@@ -349,7 +349,6 @@ dataset close gis.
 
 * BASISVERWERKING PERCEELDELEN.
 
-rename variables oppervlakte_gis=oppervlakte_perceel_gis.
 * juridische oppervlakte.
 
 recode co1 co2 (missing=0).
