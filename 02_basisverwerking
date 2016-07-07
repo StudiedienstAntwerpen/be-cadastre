@@ -349,6 +349,17 @@ dataset close gis.
 
 * BASISVERWERKING PERCEELDELEN.
 
+rename variables oppervlakte_gis=oppervlakte_perceel_gis.
+* juridische oppervlakte.
+
+recode co1 co2 (missing=0).
+compute juridische_oppervlakte=co1+co2.
+
+AGGREGATE
+  /OUTFILE=* MODE=ADDVARIABLES OVERWRITEVARS=YES
+  /BREAK=capakey
+  /juridische_oppervlakte_perceel=MAX(juridische_oppervlakte).
+DELETE VARIABLES juridische_oppervlakte.
 
 * preprocessing van de constructiecode.
 string CC_YN (a1).
