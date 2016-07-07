@@ -17,7 +17,7 @@ DATASET NAME eenvoudig WINDOW=FRONT.
 *verwijder balast.
 match files
 /file=*
-/keep=capakey statsec wijkcode oppervl.
+/keep=capakey statsec wijkcode.
 *standaardiseer tekstvariabelen.
 alter type statsec (a4).
 alter type wijkcode (a5).
@@ -102,7 +102,6 @@ AGGREGATE
   /OUTFILE=* MODE=ADDVARIABLES
   /BREAK=capakey
   /oppervlakte_max=MAX(oppervlakte) 
-  /oppervl=sum(oppervl)
   /combinaties_max=MAX(combinaties).
 
 * ben je op alles nummer 1, dan wijzen we het perceeldeel aan die sector toe.
@@ -133,7 +132,7 @@ match files
 /file=*
 /keep=capakey
 statsec
-WijkCode oppervl.
+WijkCode.
 *standaardiseer tekstvariabelen.
 alter type statsec (a4).
 alter type wijkcode (a5).
@@ -142,12 +141,15 @@ alter type wijkcode (a5).
 ADD FILES /FILE=*
   /FILE='eenvoudig'.
 EXECUTE.
-
 sort cases capakey (a).
-rename variables oppervl=oppervlakte_gis.
 
 * sla op als SPSS tabel.
 SAVE OUTFILE='' + basismap + '\werkbestanden\sectoren_toekennen.sav'
   /COMPRESSED.
 
+new file.
+dataset name leeg window=front.
 dataset close eenvoudig.
+dataset close finalagg.
+
+
