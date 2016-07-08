@@ -1,7 +1,7 @@
 # be-cadastre
 This repository provides you with scripts to turn the dumps of the Belgian Cadastre (as provided to every municipality in Belgium) into some nice statistics about ownership, number of residences et cetera.
 
-The dumps have been provided in the same way for a rather long period. However, the essential "construction code" seems to be provided from 2013 only. From 2016 onwards, new dumps will be in a slightly different format.
+The dumps have been provided in the same way for a rather long period. However, the essential "construction code" seems to be provided from 2013 only. From 2016 onwards, new dumps will be in a slightly different format. An adapted version shouldn't present any real issues. A different procedure (probably xsave) will already be implemented to create a file with all owner-parcel combinations. The current script is hardcoded for 4 potential owners.
 
 The scripts available here are written in SPSS. You can get a free one month trial version of this software. 
 The programming is quite simple, so it shouldn't be too difficult to translate the scripts into the language of your choice.
