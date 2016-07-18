@@ -827,6 +827,7 @@ AGGREGATE
 compute verdiepen_perceel=max(n_verdiep_max,verdiep_max).
 if missing(verdiepen_perceel) verdiepen_perceel=n_verdiep_max.
 if missing(verdiepen_perceel) verdiepen_perceel=verdiep_max.
+compute verdiepen_perceel=trunc(verdiepen_perceel).
 compute verdiepen_inc_dakverdiep=verdiepen_perceel.
 if dakverdiep_max=1 verdiepen_inc_dakverdiep=verdiepen_perceel+1.
 EXECUTE.
