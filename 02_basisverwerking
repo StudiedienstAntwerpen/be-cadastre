@@ -1051,7 +1051,7 @@ variable labels kamers_niet_woning 'kamers in andere dingen dan woningen'.
 * bebouwde oppervlakte.
 
 variable labels CC_13 'bebouwde grondoppervlakte'.
-compute bebouwde_oppervlakte=number(cc_13,f5.0).
+compute bebouwde_oppervlakte_origineel=number(cc_13,f5.0).
 * slechts 40 percelen met meer dan een oppervlaktewaarde.
 * bijna 20% missings op perceelniveau.
 * ontbreekt vaak als er woningen zijn.
@@ -1060,9 +1060,34 @@ compute bebouwde_oppervlakte=number(cc_13,f5.0).
 
 * nuttige oppervlakte.
 variable labels CC_14 'Nuttige oppervlakte'.
-compute nuttige_oppervlakte=number(cc_14,f5.0).
+compute nuttige_oppervlakte_origineel=number(cc_14,f5.0).
 * nagenoeg voor alle woningen ingevuld.
 * van de woning-rijen heeft 52%  zowel nuttige als bebouwde oppervlakte.
+
+
+* cleanen oppervlaktes.
+
+* indien je wil zien welke percelen een rare geometrie of een rare wettelijke oppervlakte hebben.
+* compute test_gis_jur=juridische_oppervlakte_perceel/oppervlakte_perceel_gis.
+
+* arbitraire grens: indien de bebouwde oppervlakte meer dan dubbel zo groot is als het maximum van geografische 
+of juridsiche oppervlakte, dan beschouwen we deze als fout (onbestaand).
+compute #test_bebouwde_opp=bebouwde_oppervlakte_origineel/max(oppervlakte_perceel_gis,juridische_oppervlakte_perceel).
+if #test_bebouwde_opp<2 bebouwde_oppervlakte=bebouwde_oppervlakte_origineel.
+
+* arbitraire grens: indien de nuttige oppervlakte meer dan dubbel zo groot is als het maximum van geografische of juridsiche oppervlakte, vermenigvuldigd met het aantal bouwlagen, dan beschouwen we deze als fout (onbestaand).
+* we passen dit enkel toe indien er minstens een verdiepen is.
+recode verdiepen_inc_dakverdiep
+(lowest thru 0=0) (0 thru 0.99=0) (missing=0) into #verdiepenteller.
+compute #test_nuttige_opp=nuttige_oppervlakte_origineel/(max(oppervlakte_perceel_gis,juridische_oppervlakte_perceel)*(#verdiepenteller+1)).
+if #test_nuttige_opp< 2 | #verdiepenteller=0 nuttige_oppervlakte=nuttige_oppervlakte_origineel.
+
+* als je alle rare gevallen bovenaan wilt hebben (best in hele module # verwijderen).
+*compute maxtest=max(test_bebouwde_opp,test_nuttige_opp,test_gis_jur).
+*sort cases maxtest (d).
+
+* einde oppervlakte cleaning
+
 
 
 
