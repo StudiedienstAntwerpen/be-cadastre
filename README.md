@@ -27,7 +27,8 @@ Scripts:
 - 01: convert the base data to .sav files
 - 02: create a usable ownership dataset and make property level variables
 - 03: classify ownership, including finding people who live in their own property
-- 04: (work in progress) turn into a handy dataset of parcels and statistical sectors
+- 04: finish ownership data, prepare measures at housing unit and parcel level
+- 05: turn into a handy dataset of parcels and statistical sectors
 
 
 ## Contribute
