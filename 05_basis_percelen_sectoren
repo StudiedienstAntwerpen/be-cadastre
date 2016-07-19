@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 * Encoding: windows-1252.
 DEFINE werkbestanden () 'G:\OD_IF_AUD\2_04_Statistiek\2_04_01_Data_en_kaarten\kadaster_percelen\kadaster_gebouwdelen_2015\werkbestanden\' !ENDDEFINE.
 
@@ -267,7 +260,6 @@ SAVE OUTFILE='G:\OD_IF_AUD\2_04_Statistiek\2_04_01_Data_en_kaarten\kadaster_perc
 
 
 * op buurtniveau.
-
 DATASET DECLARE statsecprc.
 AGGREGATE
   /OUTFILE='statsecprc'
@@ -311,6 +303,7 @@ AGGREGATE
 /prc_sombouwjaren_woningen=sum(prc_sombouwjaren_woningen)
 /prc_woningen_met_bouwjaar=sum(prc_woningen_met_bouwjaar).
 dataset activate statsecprc.
+* de volgende aanpassingen zijn er om het bestand helemaal af te stemmen op het formaat van Swing.
 rename variables statsec=geoitem.
 alter type geoitem (a5).
 recode geoitem (""="9999").
@@ -318,7 +311,9 @@ compute period=2014.
 string geolevel (a5).
 compute geolevel="buurt".
 
+
 *op wijkniveau.
+* deze extra aggregatie is nodig omdat niet alle wijkgrenzen exact samenvallen met sectorgrenzen. Als jouw wijken wel mooi gebouwd zijn op sectorgrenzen, is een eenmalige aggregatie voldoende.
 DATASET ACTIVATE basic.
 DATASET DECLARE wijkprc.
 AGGREGATE
