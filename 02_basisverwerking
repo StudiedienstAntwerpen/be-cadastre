@@ -853,7 +853,7 @@ recode bouwjaar_ruw (1 thru 5 = copy) (6 thru highest=6) (missing=99) into bouwj
 if bouwjaar_ruw>1930 & bouwjaar_ruw <1946 bouwjaar_cat=6.
 if bouwjaar_ruw>1945 & bouwjaar_ruw <1983 bouwjaar_cat=7.
 if bouwjaar_ruw>1983 & bouwjaar_ruw <1999 bouwjaar_cat=8.
-if bouwjaar_ruw>1999 bouwjaar_cat=7.
+if bouwjaar_ruw>1999 bouwjaar_cat=9.
 value labels bouwjaar_cat
 1  "voor 1850"
 2 "1850-1874"
