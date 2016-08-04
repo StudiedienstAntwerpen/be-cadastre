@@ -1,10 +1,5 @@
 * Encoding: windows-1252.
 
-* OUDERE JAREN:
-* jaren aanpassen: in de stijl van "toestand op 1 jauari is de dump van 2015 wel degelijk 2015.
-* fout in classificatie bouwjaar aanpassen.
-
-
 DEFINE werkbestanden () 'G:\OD_IF_AUD\2_04_Statistiek\2_04_01_Data_en_kaarten\kadaster_percelen\kadaster_gebouwdelen_2015\werkbestanden\' !ENDDEFINE.
 
 
