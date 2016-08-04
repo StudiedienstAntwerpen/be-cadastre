@@ -29,6 +29,7 @@ Scripts:
 - 03: classify ownership, including finding people who live in their own property
 - 04: finish ownership data, prepare measures at housing unit and parcel level
 - 05: turn into a handy dataset of parcels and statistical sectors
+- 06: expanded set of statistical sector indicators
 
 
 ## Contribute
@@ -37,6 +38,8 @@ Did you use the script and something went wrong?
 
 If you need help, please post a new [issue](https://github.com/joostschouppe/be-cadastre/issues/new).
 
-If you found a solution, create a Branch, adapt and make a Pull request to get your fix into the main scripts. If you don't know how to Github, a good place to start is [here](https://guides.github.com/activities/hello-world/).
+If you found a solution: create a Branch, adapt and make a Pull request to get your fix into the main scripts. 
+
+If you don't know how to Github, a good place to start is [here](https://guides.github.com/activities/hello-world/).
 
 Sharing is caring.
