@@ -37,18 +37,6 @@ if type_constructie=1 gesloten_bebouwing=1.
 if type_constructie=2 halfopen_bebouwing=1.
 if type_constructie=3 open_bebouwing=1.
 
-
-* hoeveel woningen zijn er met dit aantal kamers per woning op deze rij.
-if kamers_per_woning<2 kamers_min2=woningen.
-if kamers_per_woning<3 & kamers_per_woning >=2 kamers2=woningen.
-if kamers_per_woning<4 & kamers_per_woning >=3 kamers3=woningen.
-if kamers_per_woning<5 & kamers_per_woning >=4 kamers4=woningen.
-if kamers_per_woning<6 & kamers_per_woning >=5 kamers5=woningen.
-if kamers_per_woning<7 & kamers_per_woning >=6 kamers6=woningen.
-if kamers_per_woning<8 & kamers_per_woning >=7 kamers7=woningen.
-if kamers_per_woning >=8 kamers8plus=woningen.
-
-
 * berekening woon en totale beschikbare oppervlakte.
 RECODE nuttige_oppervlakte (0=SYSMIS) (else=copy) into nuttige_opp.
 if woningen>0 woonoppervlakte=nuttige_opp.
@@ -77,6 +65,7 @@ DATASET DECLARE basic.
 AGGREGATE
   /OUTFILE='basic'
   /BREAK=capakey statsec wijkcode
+
 /adres=first(sl1)
 /aantal_perceeldelen=N
 /oppervlakte_perceel_gis=max(oppervlakte_perceel_gis)
@@ -88,14 +77,6 @@ AGGREGATE
 /sociale_eigendom_wng=sum(sociale_eigendom_wng)
 /overheidseigendom_wng=sum(overheidseigendom_wng)
 /privaat_rechtspersoon_wng=sum(privaat_rechtspersoon_wng)
-/kamers_min2=sum(kamers_min2)
-/kamers2=sum(kamers2)
-/kamers3=sum(kamers3)
-/kamers4=sum(kamers4)
-/kamers5=sum(kamers5)
-/kamers6=sum(kamers6)
-/kamers7=sum(kamers7)
-/kamers8plus=sum(kamers8plus)
 /woonkamers=sum(aantal_kamers)
 /kamers_niet_woning=sum(kamers_niet_woning)
 /bebouwde_oppervlakte=sum(bebouwde_oppervlakte)
@@ -275,14 +256,6 @@ AGGREGATE
   /prc_verdiep_5_9=SUM(verdiep_5_9) 
   /prc_verdiep_10plus=SUM(verdiep_10plus)
 /prc_n_woonkamers=sum(prc_woonkamers)
-/prc_woonkamers_min2=sum(wng_min2woonkamers)
-/prc_woonkamers2=sum(wng_2woonkamers)
-/prc_woonkamers3=sum(wng_3woonkamers)
-/prc_woonkamers4=sum(wng_4woonkamers)
-/prc_woonkamers5=sum(wng_5woonkamers)
-/prc_woonkamers6=sum(wng_6woonkamers)
-/prc_woonkamers7=sum(wng_7woonkamers)
-/prc_woonkamers8plus=sum(wng_8pwoonkamers)
   /prc_woning_rijhuis=SUM(prc_woning_rijhuis) 
   /prc_woning_halfopenhuis=SUM(prc_woning_halfopenhuis) 
   /prc_woning_openhuis=SUM(prc_woning_openhuis) 
@@ -307,7 +280,7 @@ dataset activate statsecprc.
 rename variables statsec=geoitem.
 alter type geoitem (a5).
 recode geoitem (""="9999").
-compute period=2014.
+compute period=2015.
 string geolevel (a5).
 compute geolevel="buurt".
 
@@ -361,7 +334,7 @@ dataset activate wijkprc.
 rename variables wijkcode=geoitem.
 alter type geoitem (a5).
 recode geoitem (""="onb").
-compute period=2014.
+compute period=2015.
 string geolevel (a5).
 compute geolevel="wijk".
 
@@ -415,7 +388,7 @@ prc_onbebouwd_opp (missing=0).
 
 EXECUTE.
 
-SAVE TRANSLATE OUTFILE='\\Antwerpen.local\Doc\OD_IF_AUD\2_04_Statistiek\2_04_09_Ontwikkeling_website_DSPA\Swing_cijfers_interactief\bestanden_swing\Kadaster\kadaster_2014.xlsx'
+SAVE TRANSLATE OUTFILE='\\Antwerpen.local\Doc\OD_IF_AUD\2_04_Statistiek\2_04_09_Ontwikkeling_website_DSPA\Swing_cijfers_interactief\bestanden_swing\Kadaster\kadaster_2015.xlsx'
   /TYPE=XLS
   /VERSION=12
   /MAP
