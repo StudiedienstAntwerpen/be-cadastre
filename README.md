@@ -33,6 +33,12 @@ Scripts:
 - 05: turn into a handy dataset of parcels and statistical sectors
 - 06: expanded set of statistical sector indicators
 
+## Using results
+
+The output for GIS use is written to a DBF file because ArcGIS likes those.
+
+The output at the neighborhood level are written to an Excel file. This is formatted for use with [Swing](http://swing.eu/), a geostatistical data platform. For those using the platform, [an Excel file is provided](https://github.com/joostschouppe/be-cadastre/blob/master/metadata_swing.xls) with metadata and settings for the created variables. It seems to work best if you load the data first, only then the metadata.
+
 
 ## Contribute
 
