@@ -353,11 +353,15 @@ dataset close gis.
 
 recode co1 co2 (missing=0).
 compute juridische_oppervlakte=co1+co2.
+compute juridische_oppervlakte_belastbaar=co1.	
+compute juridische_oppervlakte_onbelastbaar=co2.
 
 AGGREGATE
   /OUTFILE=* MODE=ADDVARIABLES OVERWRITEVARS=YES
   /BREAK=capakey
-  /juridische_oppervlakte_perceel=MAX(juridische_oppervlakte).
+  /juridische_oppervlakte_perceel=MAX(juridische_oppervlakte)
+  /jur_opp_belastbaar_perceel=MAX(juridische_oppervlakte_belastbaar)			
+  /jur_opp_onbelastbaar_perceel=MAX(juridische_oppervlakte_onbelastbaar).
 DELETE VARIABLES juridische_oppervlakte.
 
 * preprocessing van de constructiecode.
@@ -749,7 +753,7 @@ if CHAR.INDEX(verdiep1,".")>0 verdiep1=char.substr(verdiep1,1,CHAR.INDEX(verdiep
 if CHAR.INDEX(verdiep1,"-")>0 verdiep1=char.substr(verdiep1,1,CHAR.INDEX(verdiep1,"-")-1).
 if CHAR.INDEX(verdiep1," ")>0 verdiep1=char.substr(verdiep1,1,CHAR.INDEX(verdiep1," ")-1).
 if CHAR.INDEX(verdiep1,"@")>0 verdiep1=char.substr(verdiep1,1,CHAR.INDEX(verdiep1,"@")-1).
-if CHAR.INDEX(verdiep1,"&")>0 verdiep1=char.substr(verdiep1,1,CHAR.INDEX(verdiep1,"@")-1).
+if CHAR.INDEX(verdiep1,"&")>0 verdiep1=char.substr(verdiep1,1,CHAR.INDEX(verdiep1,"&")-1).
 * we gaan ervan uit dat als het verdiepnummer nu nog altijd begint met OG, GV, TV of BE, alles wat erachter komt weg mag.
 if CHAR.INDEX(verdiep1,"GV")=1 verdiep1=char.substr(verdiep1,1,2).
 if CHAR.INDEX(verdiep1,"OG")=1  verdiep1=char.substr(verdiep1,1,2).
@@ -1796,11 +1800,16 @@ compute KI_belastbaar=ki_deel1+ki_deel2.
 
 * bij andere letters betreffen de variabelen onbelastbaar inkomen.
 if ~(cod1_positie2="F" | cod1_positie2="P" | cod1_positie2="K" | cod1_positie2="L") ki_onbelast_deel1=ri1.
-if cod2_positie2="F" | cod2_positie2="P" | cod2_positie2="K" | cod2_positie2="L" ki_onbelast_deel2=ri2.
+if ~(cod2_positie2="F" | cod2_positie2="P" | cod2_positie2="K" | cod2_positie2="L") ki_onbelast_deel2=ri2.
 recode ki_onbelast_deel1 ki_onbelast_deel2 (missing=0).
 compute KI_onbelastbaar=ki_onbelast_deel1+ki_onbelast_deel2.
 
 execute.
+delete variables cod1_positie2	
+cod2_positie2			
+ki_deel1			
+ki_deel2 ki_onbelast_deel1			
+ki_onbelast_deel2.
 
 SAVE OUTFILE='' + basismap + 'werkbestanden\werkbestand_gebouwdelen.sav'
   /COMPRESSED.
