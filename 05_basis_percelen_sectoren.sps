@@ -112,6 +112,50 @@ AGGREGATE
 DATASET ACTIVATE basic.
 
 
+DATASET ACTIVATE gebouwdelen.
+DATASET DECLARE adressen.
+AGGREGATE
+  /OUTFILE='adressen'
+  /BREAK=capakey sl1
+  /N_BREAK=N.
+dataset activate adressen.
+
+if $casenum=1 volgnummer=1.
+if capakey~=lag(capakey) volgnummer=1.
+if capakey=lag(capakey) volgnummer=lag(volgnummer)+1.
+
+
+AGGREGATE
+  /OUTFILE=* MODE=ADDVARIABLES
+  /BREAK=capakey
+  /uniekadressen=N.
+
+string adressen (a150).
+if volgnummer=1 adressen=sl1.
+if capakey=lag(capakey) & sl1=lag(sl1) adressen=lag(adressen). 
+if capakey=lag(capakey) & sl1~=lag(sl1) adressen=concat(ltrim(rtrim(lag(adressen))),", ",sl1). 
+
+DATASET ACTIVATE adressen.
+FILTER OFF.
+USE ALL.
+SELECT IF (volgnummer = uniekadressen).
+EXECUTE.
+
+* als er heel veel adressen zijn, geef dan aan dat niet alles weergegeven is met [...].
+if length(ltrim(rtrim(adressen)))=150 adressen=concat("[...]",adressen).
+
+match files
+/file=*
+/keep=capakey adressen.
+
+DATASET ACTIVATE basic.
+MATCH FILES /FILE=*
+  /TABLE='adressen'
+  /BY capakey.
+EXECUTE.
+dataset close adressen.
+
+
 GET
   FILE='' + werkbestanden + 'eigenaars_perceelniveau.sav'.
 DATASET NAME perceeleigenaars WINDOW=FRONT.
@@ -216,27 +260,59 @@ if prc_eengezinswoning=1 & eigenaarswoning=1 prc_eengezins_eigenaarswoning=1.
 
 * parkeren.
 if woningen>0 prc_woon_parkeren=parkeerplaatsen.
-if prc_woon_parkeren=0 & woningen>0 prc_woningen_geenparking=parkeerplaatsen.
+if prc_woon_parkeren=0 & woningen>0 prc_woningen_geenparking=woningen.
 if prc_woon_parkeren>0 & prc_woon_parkeren<woningen prc_woningen_teweinigparking=woningen.
 if prc_woon_parkeren=woningen prc_woningen_netgenoegparking=woningen.
 if prc_woon_parkeren>woningen prc_woningen_parkeeroverschot=woningen.
 
 * kamers.
-*  variabele=aantal woningen op dit perceel met zoveel kamers.
 rename variables woonkamers=prc_woonkamers.
-rename variables kamers_min2=wng_min2woonkamers.
-rename variables kamers2=wng_2woonkamers.
-rename variables kamers3=wng_3woonkamers.
-rename variables kamers4=wng_4woonkamers.
-rename variables kamers5=wng_5woonkamers.
-rename variables kamers6=wng_6woonkamers.
-rename variables kamers7=wng_7woonkamers.
-rename variables kamers8plus=wng_8pwoonkamers.
+
+
+RENAME VARIABLES eigenaarswoning=eigenaarswoningen.
+rename variables prc_onbebouwd_opp=onbebouwd_opp.
+rename variables prc_vloeroppervlakte=vloeroppervlakte.
+
+rename variables prc_woonkamers=woonkamers.
+rename variables prc_eengezinswoning=eengezinswoning.
+rename variables prc_meergezinswoningen=meergezinswoningen.
+
+
+match files
+/file=* 
+keep=capakey
+statsec
+WijkCode
+adressen
+aantal_perceeldelen
+oppervlakte_perceel_gis
+juridische_oppervlakte_perceel
+bebouwde_oppervlakte_origineel
+nuttige_oppervlakte_origineel
+bebouwde_oppervlakte
+onbebouwd_opp
+nuttige_oppervlakte
+woonoppervlakte
+vloeroppervlakte
+verdiepen
+woningen
+eigenaarswoningen
+eengezinswoning
+meergezinswoningen
+woonkamers
+bouwjaar_origineel_recentst
+oudste_bouwjaar
+recentste_bouwjaar
+recentste_jaar_wijziging
+prc_sombouwjaren_woningen
+prc_woningen_met_bouwjaar
+parkeerplaatsen
+type_eigenaars_perceel
+bebouwingstype.
 
 
 
-
-SAVE OUTFILE='G:\OD_IF_AUD\2_04_Statistiek\2_04_01_Data_en_kaarten\kadaster_percelen\kadaster_gebouwdelen_2015\werkbestanden\dataset_percelen.sav'
+SAVE OUTFILE='' + werkbestanden + 'dataset_percelen.sav'
   /COMPRESSED.
 
 
@@ -270,8 +346,6 @@ AGGREGATE
    /prc_woonoppervlakte=SUM(woonoppervlakte)
    /prc_door_eigenaar_bewoonde_woning=sum(eigenaarswoning)
 /prc_eengezins_eigenaarswoning=sum(prc_eengezins_eigenaarswoning)
-/prc_onbebouwd=sum(onbebouwd_perceel)
-/prc_onbebouwd_opp=sum(prc_onbebouwd_opp)
 /prc_oudewoning=sum(prc_oudewoning)
 /prc_sombouwjaren_woningen=sum(prc_sombouwjaren_woningen)
 /prc_woningen_met_bouwjaar=sum(prc_woningen_met_bouwjaar).
@@ -288,6 +362,8 @@ compute geolevel="buurt".
 *op wijkniveau.
 * deze extra aggregatie is nodig omdat niet alle wijkgrenzen exact samenvallen met sectorgrenzen. Als jouw wijken wel mooi gebouwd zijn op sectorgrenzen, is een eenmalige aggregatie voldoende.
 DATASET ACTIVATE basic.
+* om Swing-technische redenen.	
+recode wijkcode ("SCH01"="").
 DATASET DECLARE wijkprc.
 AGGREGATE
   /OUTFILE='wijkprc'
@@ -302,15 +378,6 @@ AGGREGATE
   /prc_verdiep_3_4=SUM(verdiep_3_4) 
   /prc_verdiep_5_9=SUM(verdiep_5_9) 
   /prc_verdiep_10plus=SUM(verdiep_10plus)
-/prc_n_woonkamers=sum(prc_woonkamers)
-/prc_woonkamers_min2=sum(wng_min2woonkamers)
-/prc_woonkamers2=sum(wng_2woonkamers)
-/prc_woonkamers3=sum(wng_3woonkamers)
-/prc_woonkamers4=sum(wng_4woonkamers)
-/prc_woonkamers5=sum(wng_5woonkamers)
-/prc_woonkamers6=sum(wng_6woonkamers)
-/prc_woonkamers7=sum(wng_7woonkamers)
-/prc_woonkamers8plus=sum(wng_8pwoonkamers)
   /prc_woning_rijhuis=SUM(prc_woning_rijhuis) 
   /prc_woning_halfopenhuis=SUM(prc_woning_halfopenhuis) 
   /prc_woning_openhuis=SUM(prc_woning_openhuis) 
@@ -325,8 +392,6 @@ AGGREGATE
    /prc_woonoppervlakte=SUM(woonoppervlakte)
    /prc_door_eigenaar_bewoonde_woning=sum(eigenaarswoning)
 /prc_eengezins_eigenaarswoning=sum(prc_eengezins_eigenaarswoning)
-/prc_onbebouwd=sum(onbebouwd_perceel)
-/prc_onbebouwd_opp=sum(prc_onbebouwd_opp)
 /prc_oudewoning=sum(prc_oudewoning)
 /prc_sombouwjaren_woningen=sum(prc_sombouwjaren_woningen)
 /prc_woningen_met_bouwjaar=sum(prc_woningen_met_bouwjaar).
@@ -360,14 +425,6 @@ prc_verdiep_3_4
 prc_verdiep_5_9
 prc_verdiep_10plus
 prc_n_woonkamers
-prc_woonkamers_min2
-prc_woonkamers2
-prc_woonkamers3
-prc_woonkamers4
-prc_woonkamers5
-prc_woonkamers6
-prc_woonkamers7
-prc_woonkamers8plus
 prc_woning_rijhuis
 prc_woning_halfopenhuis
 prc_woning_openhuis
@@ -382,8 +439,7 @@ prc_vloeroppervlakte
 prc_woonoppervlakte
 prc_door_eigenaar_bewoonde_woning
 prc_eengezins_eigenaarswoning
-prc_onbebouwd
-prc_onbebouwd_opp (missing=0).
+(missing=0).
 
 
 EXECUTE.
