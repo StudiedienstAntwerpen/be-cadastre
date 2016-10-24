@@ -1,10 +1,10 @@
 # be-cadastre
 This repository provides you with scripts to turn the dumps of the Belgian Cadastre (as provided to every municipality in Belgium) into some nice statistics about ownership, number of residences et cetera.
 
-The dumps have been provided in the same way for a rather long period. However, the essential "construction code" seems to be provided from 2013 only. From 2016 onwards, new dumps will be in a slightly different format. An adapted version shouldn't present any real issues. A different procedure (probably xsave) will be implemented to create a file with all owner-parcel combinations. The current script is hardcoded for 4 potential owners.
+The dumps have been provided in the same way for a rather long period. However, the essential "construction code" seems to be provided from 2013 only. From 2016 onwards, new dumps are in a slightly different format. An adapted version is in the works.
 
 The scripts available here are written in SPSS. You can get a free one month trial version of this software. 
-The programming is quite simple, so it shouldn't be too difficult to translate the scripts into the language of your choice. The SPS file extension is associated with SPSS, but can be opened in any text editor.
+The programming is quite simple, so it shouldn't be too difficult to translate the scripts into the language of your choice. The SPS file extension is associated with SPSS, but can be opened in any text editor. If you are looking for a little project
 
 The scripts assume your SPSS is set to Locale text encoding. Using unicode will probably pose no problems. Do avoid switching between encodings within one project. You can set your encoding at Edit>Options>Language before you opened any data.
 
