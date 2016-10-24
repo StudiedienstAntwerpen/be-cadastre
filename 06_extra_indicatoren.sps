@@ -50,7 +50,7 @@ if jaar_wijziging >= 2001 & jaar_wijziging<=2010 wng_gewijzigd_2001_2010=woninge
 if jaar_wijziging >= 2011 wng_gewijzigd_2011p=woningen.
 
 * idem, maar dan volgens recentste jaar wijziging/bouw.
-
+* in geval één van de twee missing is, dan wordt de bekende waarde genomen.
 compute recentste_jaar=max(bouwjaar_schatting,jaar_wijziging).
 if missing(recentste_jaar) wng_wb_onbekend=woningen.
 if recentste_jaar<1900 wng_wb_v1900=woningen.
@@ -225,6 +225,7 @@ AGGREGATE
 /prc_opslag=sum(prc_opslag)
 /prc_kantoor=sum(prc_kantoor)
 /prc_commercieel=sum(prc_commercieel)
+/prc_onbebouwd=sum(prc_onbebouwd)
 /prc_ander_onbekend=sum(prc_ander_onbekend)
 /prc_oppappartementsgebouw=sum(prc_oppappartementsgebouw)
 /prc_opphuizen=sum(prc_opphuizen)
@@ -232,6 +233,7 @@ AGGREGATE
 /prc_oppopslag=sum(prc_oppopslag)
 /prc_oppkantoor=sum(prc_oppkantoor)
 /prc_oppcommercieel=sum(prc_oppcommercieel)
+/prc_opponbebouwd=sum(prc_opponbebouwd)
 /prc_oppander_onbekend=sum(prc_oppander_onbekend).
 dataset activate statsecprc.
 * de volgende aanpassingen zijn er om het bestand helemaal af te stemmen op het formaat van Swing.
@@ -307,6 +309,7 @@ AGGREGATE
 /prc_opslag=sum(prc_opslag)
 /prc_kantoor=sum(prc_kantoor)
 /prc_commercieel=sum(prc_commercieel)
+/prc_onbebouwd=sum(prc_onbebouwd)
 /prc_ander_onbekend=sum(prc_ander_onbekend)
 /prc_oppappartementsgebouw=sum(prc_oppappartementsgebouw)
 /prc_opphuizen=sum(prc_opphuizen)
@@ -314,6 +317,7 @@ AGGREGATE
 /prc_oppopslag=sum(prc_oppopslag)
 /prc_oppkantoor=sum(prc_oppkantoor)
 /prc_oppcommercieel=sum(prc_oppcommercieel)
+/prc_opponbebouwd=sum(prc_opponbebouwd)
 /prc_oppander_onbekend=sum(prc_oppander_onbekend).
 
 
@@ -390,6 +394,7 @@ prc_industrie
 prc_opslag
 prc_kantoor
 prc_commercieel
+prc_onbebouwd
 prc_ander_onbekend
 prc_oppappartementsgebouw
 prc_opphuizen
@@ -397,6 +402,7 @@ prc_oppindustrie
 prc_oppopslag
 prc_oppkantoor
 prc_oppcommercieel
+prc_opponbebouwd
 prc_oppander_onbekend
 (missing=0).
 
