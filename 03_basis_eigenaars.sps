@@ -62,11 +62,7 @@ compute type_eigenaar=5.
 if char.subst(eig_code,1,2)="XX" | char.subst(eig_code,1,2)="XY" type_eigenaar=2.
 if antwerpenaar=1 & (char.subst(eig_code,1,2)="XX" | char.subst(eig_code,1,2)="XY") type_eigenaar=1.
 if overheidseigenaar=1 type_eigenaar=4.
-IF (Eig_code='FM403795657EABN' | Eig_code='FM404710724EABN' | Eig_code='AM404688354XXXN' | 
-    Eig_code='AM421111543XXXN' | Eig_code='DB207500123EABN') type_eigenaar=3.
-* OCMW en Stad Antwerpen niet opgenomen als sociale eigenaar.
-* opgelet DB207500123EABN is de stad Antwerpen: woningen van de stad zijn allicht sociale woningen, maar ze hebben ook enkele duizenden percelen die niet sociale woningen zijn.
-* OCMW is niet opgenomen, omdat zij veel "woningen" hebben die wellicht eerder serviceflats of ziekenhuiskamers zijn.
+IF (Eig_code='{codes van je sociale eigenaars}') type_eigenaar=3.
 
 value labels type_eigenaar
 1 'Antwerps persoon'
