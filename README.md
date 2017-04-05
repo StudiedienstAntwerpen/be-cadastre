@@ -1,12 +1,12 @@
 # be-cadastre
 This repository provides you with scripts to turn the dumps of the Belgian Cadastre (as provided to every municipality in Belgium) into some nice statistics about ownership, number of residences et cetera.
 
-The dumps have been provided in the same way for a rather long period. However, the essential "construction code" seems to be provided from 2013 only. From 2016 onwards, new dumps are in a slightly different format. An adapted version is in the works.
+The dumps have been provided in the same way for a rather long period. However, the essential "construction code" seems to be provided from 2013 only. From 2016 onwards, new dumps are in a slightly different format. An adapted version is in the works, but can be tested already.
 
 The scripts available here are written in SPSS. You can get a free one month trial version of this software. 
-The programming is quite simple, so it shouldn't be too difficult to translate the scripts into the language of your choice. The SPS file extension is associated with SPSS, but can be opened in any text editor. If you are looking for a little project
+The programming is quite simple, so it shouldn't be too difficult to translate the scripts into the language of your choice. The SPS file extension is associated with SPSS, but can be opened in any text editor. If you are looking for a little project, it would be great to have a translation to an open source package, probably R is most suitable.
 
-The scripts assume your SPSS is set to Locale text encoding. Using unicode will probably pose no problems. Do avoid switching between encodings within one project. You can set your encoding at Edit>Options>Language before you opened any data.
+The scripts assume your SPSS is set to Locale text encoding. Using unicode will probably pose no problems, except with names of people. Do avoid switching between encodings within one project. You can set your encoding at Edit>Options>Language before you opened any data.
 
 The scripts depend on each other: you can only run number 06 if you ran all the lower numbers in order.
 
@@ -54,4 +54,3 @@ If you found a solution: create a Branch, adapt and make a Pull request to get y
 
 If you don't know how to Github, a good place to start is [here](https://guides.github.com/activities/hello-world/).
 
-Sharing is caring.
