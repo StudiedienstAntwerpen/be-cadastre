@@ -1,0 +1,112 @@
+<html>
+<HEAD>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<STYLE type=text/css>
+p           {margin: 0em;} /* Marge tussen paragraven op 0 instellen */
+table.st    {border-collapse:collapse; border-top:2px outset white; border-left:2px outset white; border-right:1px outset white; border-bottom:1px outset white; text-align: right; font-family: Arial;}
+table.st th {padding:1px 5px; border:2px inset white; text-align: left; background-color: rgb(212,208,200);}
+table.st td {padding:1px 5px; border:2px inset white;}
+tr.cl       {} /* (C)olumn (L)abel : Wordt gebruikt voor het weergeven een label / naam van een kolom. */
+td.td       {font-weight: bold} /* (T)otal (D)ata : Wordt gebruikt voor het weergeven van een normaal totaal. */
+td.f        {color: gray; font-style: italic;} /* (F)orecast : Wordt gebruikt voor het weergeven van prognose data. */
+td.tf		    {color: gray; font-style: italic;} /* (T)otal (F)orecast : Wordt gebruikt voor het weergeven van een prognose - totaal. */
+td.e        {color: gray;} /* (E)stimation : Wordt gebruikt voor het weergeven van geextrapoleerde data. */
+td.te       {color: gray; font-weight: bold;} /* (T)otal (E)stimation : Wordt gebruikt voor het weergeven van een geextrapoleerd - totaal. */
+th.rl       {text-align: left;} /* (R)ow (L)abel : Wordt gebruikt voor het weergeven een label / naam van een rij. */
+th.tcl      {text-align: left;} /* (T)otal (C)olumn (L)abel : Wordt gebruikt voor het weergeven een label / naam van de totaal label kolom, de kolom met rij totalen. */
+tr.ct       {} /* (C)olumn (T)otals : Wordt gebruikt voor het weergeven van de totaal rij, de rij met kolom totalen. */
+tr.odd th   {} /* Wordt gebruikt voor het wisselen van de achtergrondkleur van een rij. De code geldt voor de heading van de even rijen in de tabel. */
+tr.odd td   {} /* Wordt gebruikt voor het wisselen van de achtergrondkleur van een rij. De code geldt voor de cellen van de even rijen in de tabel. */
+tr.even th  {} /* Wordt gebruikt voor het wisselen van de achtergrondkleur van een rij. De code geldt voor de heading van de oneven rijen in de tabel. */
+tr.even td  {} /* Wordt gebruikt voor het wisselen van de achtergrondkleur van een rij. De code geldt voor de celleen van de oneven rijen in de tabel. */
+table.tb 	 {border:0; display:inline; height:10px; margin:0px; padding:0px;} /*Wordt gebruikt bij rangorde tabellen*/
+table.tb td.tbf {background-color:#E6E6E6; border:0px none #000000; font-size:4px; height:10px; padding:0px; text-align:left; width:60px;} /*Wordt gebruikt voor de achtergrond van de grafiek bij rangorde tabellen*/
+div.tb 	 {background-color:#009DD1;font-size:4px;height:10px;margin:0px;} /* Wordt gebruikt voor de waarde van de grafiek bij rangorde tabellen*/
+</STYLE>
+<LINK rel=stylesheet type=text/css href="style/default.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16446"></HEAD>
+<body>
+
+<H1 STYLE="color: #FFFFFF; background-color: #FFA500;">
+<DIV style="MARGIN-LEFT: 110pt">Informatie gegevens woningen en percelen kadaster</H1></DIV>
+
+<h2>Algemene informatie</h2>
+
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Item</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR> <TD>Bron</TD> <TD>Kadaster</TD> </TR>
+<TR> <TD>Beschrijving bestand</TD> <TD>De gegevens van het kadaster bevatten informatie over de percelen en woningen/gebouwen in Antwerpen. De eenheid is elk deel van een perceel met een eigenaar, het zogenaamde perceeldeel. Dit wil zeggen dat indien een perceel meerdere delen met meerdere eigenaars heeft, het zoveel keer terugkomt als er eigenaars zijn. Een voorbeeld: een perceel met een appartementsgebouw dat een eigenaar heeft, wordt een keer geteld. Een appartementsgebouw waar meerdere eigenaars zijn, wordt meerdere keren meegeteld. Op een perceeldeel kunnen zich meerdere woningen bevinden. Het bestand bevat gegevens over de invulling van het perceeldeel: 
+<UL><lI>Via de constructiecode kunnen we heel wat gegevens over de invulling distilleren: 
+<UL><LI>de functie van het perceeldeel</LI> 
+<LI>het constructietype (gesloten, (half)open bebouwing)</LI> 
+<LI>het aantal woningen</LI> 
+<LI>het aantal woonvertrekken (kamers)</LI>
+<LI>de bebouwde en nuttige oppervlakte</LI> 
+<LI>voorzieningen zoals aantal parkeerplaatsen, badkamers en de aanwezigheid van centrale verwarming</LI> 
+<LI>het aantal bouwlagen boven de grond</LI> 
+<LI>het bouwjaar</LI>
+<LI>het laatste jaar van renovatie</LI></UL></LI>  
+<LI>Ligging van het perceeldeel</LI>
+<LI>Kadastraal inkomen</LI>
+<lI>Gegevens over de eigenaar: woonplaats eigenaar, type eigenaar</LI></UL>
+</TD> </TR>
+<TR> <TD>Validiteit</TD> <TD><p>Statistisch is het de bedoeling om uit het kadaster gegevens over de woonvoorraad (woningen) en percelen te distilleren. Het gaat dan niet enkel over aantallen, maar ook over hun morfologische indeling (grootte, aanwezigheid voorzieningen,...), bezetting en functie. Hierbij moet rekening gehouden worden met volgende belangrijke aandachtspunten:</p> 
+<P>&nbsp;</P>
+<UL><LI><p>De eenheid van het bestand is niet eenduidig gericht op percelen of woningen, gezien verschillende percelen een verschillende eigendomsstructuur hebben. Alle variabelen zoals aantal woningen, aantal kamers, garages, enz... worden op perceeldeel geteld. We kunnen op deze manier wel het aantal woningen bepalen, maar de morfologie van de woningen zoals bijvoorbeeld een indeling naar aantal kamers of oppervlakte zal steeds een benadering zijn.</p></LI> 
+<P>&nbsp;</P>
+<LI><p>We hebben een zicht op de eigenaarsstructuur van de perceeldelen. Het kadaster geeft weinig zicht op de bewoning of bezetting van de woningen. We hebben via het kadaster enkel zicht of de eigenaar op zijn eigen perceeldeel woont of niet. Zo kunnen we achterhalen hoeveel woningen bewoond worden door hun eigenaar, maar we weten niet of de woningen die niet bewoond worden door de eigenaar, effectief bewoond of verhuurd worden. Het aantal huurders is op deze manier niet te bepalen.</p></LI></UL></TD> </TR>
+<TR> <TD>Betrouwbaarheid</TD> <TD>Een opmerking bij de kwaliteit van de gegevens is dat niet alle gegevens altijd goed geactualiseerd worden of dat niet alle veranderingen op een perceeldeel worden doorgegeven. Dit maakt dat in het kadaster tal van gegevens niet meer in overeenstemming zijn met de daadwerkelijke invulling van het perceeldeel. Een ander gevolg is dat bepaalde gegevens ontbreken. Tot slot zitten daardoor ook soms tegenstrijdigheden in het bestand. Zo kan de functie als woning/appartement bepaald zijn, maar wordt het aantal woningen niet geteld.</TD> </TR>
+</TABLE>
+
+<h2>Informatie achtergrondgegevens</h2>
+
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Item</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR> <TD>Perceelsinvulling<TD> Indeling van de percelen volgens de invulling van het perceel. Deze omvat volgende categorieën: <UL>
+<LI>Onbebouwde percelen: percelen zonder bebouwing, bijvoorbeeld bouwgrond, parken, groengebieden, gekadastreerde wateren.</LI>
+<LI>Huizen, hoeven en bijgebouwen: eengezinswoningen, bijgebouwen (bijvoorbeeld garages, bergplaatsen,...), hoeven en serres</LI>
+<LI>Appartementen en buildings</LI>
+<LI>Industriële gebouwen</LI>
+<LI>Opslaggebouwen</LI>
+<LI>Kantoorgebouwen</LI>
+<LI>Commerciële gebouwen: handel en horeca</LI>
+<LI>Andere: niet commerciële diensten, nutsgebouwen, gebouwen voor cultuur, sport en recreatie,...</LI>
+</UL></TD> </TR>
+<TR> <TD>Aantal woningen</TD><TD>Het aantal woningen is in principe gelijk aan het aantal woningen, geteld door het kadaster. We hanteren bij deze telling een aantal extra regels:
+<P>&nbsp;</P>
+<UL><LI>We tellen enkel woningen indien de functie of de aard van het perceeldeel op een woon- of handelsfunctie wijst.</LI> 
+<LI>Indien de functie op wonen wijst en het aantal woningen volgens het kadaster op 0 staat of niet is ingevuld, wordt het aantal woningen gelijkgesteld met 1.</LI> 
+<LI>Indien de functie of de aard van het perceeldeel niet op wonen of handel wijst, wordt het aantal woningen niet in rekening gebracht.</LI></UL></TD></TR> 
+<TR><TD>Aantal kamers</TD><TD>We tellen de kamers op basis van het aantal kamers zoals geteld door het kadaster. Het gaat hier om vertrekken met een essentiële functie zoals eetkamers, keukens, slaapkamers, woonkamers, studie- en werkruimtes. Bergruimtes worden bijvoorbeeld niet meegeteld. We kennen het aantal kamers op perceeldeelniveau, niet op woningniveau. Indien er dus meerdere woningen zijn op het perceeldeel, is het moeilijk te achterhalen hoeveel kamers elke woning exact heeft. Om de woningen in te delen volgens aantal kamers gebruiken we volgende benadering:
+<P>&nbsp;</P>
+<UL><LI>Per perceeldeel wordt het aantal kamers gedeeld door het aantal woningen</LI>
+<LI>We gaan dus op deze manier impliciet van uit dat alle woningen op een perceeldeel dezelfde structuur hebben</LI>
+<LI>Bij het delen van kamers door het aantal woningen, wordt afgerond naar beneden. Dit maakt dat de som van het aantal kamers per woning in sommige gevallen lager zal liggen dan het aantal kamers op perceeldeelniveau. Om dit verschil weg te werken, tellen we bij een aantal woningen een kamer bij. Bijvoorbeeld:
+<UL><LI>We tellen 8 woningen en 20 kamers</LI>
+<LI>Dat maakt dat in eerste instantie elke woning 2 kamers toegekend krijgen wanneer we het aantal kamers door het aantal woningen delen</LI>
+<LI>In totaal hebben we dan al 16 kamers verdeeld</LI>
+<LI>Dat betekent dat er nog 4 kamers verdeeld moeten worden</lI>
+<LI>We tellen dus bij 4 woningen nog 1 kamer bij</LI>
+<LI>Uiteindelijk hebben we voor dit perceeldeel dan 4 woningen met 2 kamers en 4 woningen met 3 kamers</LI></UL></LI></UL>
+</TD></TR>
+<TR><TD>Oppervlakte per woning</TD><TD>De oppervlakte bepalen we aan de hand van de nuttige oppervlakte. Nuttige oppervlakte is de totale oppervlakte, ingenomen door vertrekken die een essentiële functie hebben zoals eetkamers, keukens, slaapkamers, woonkamers, studie- en werkruimtes. We kennen de nuttige oppervlakte op perceeldeelniveau, niet op woningniveau. Indien er dus meerdere woningen zijn op het perceeldeel, is het moeilijk te achterhalen hoe groot de oppervlakte van elke woning is. Om de woningen in te delen volgens aantal kamers gebruiken we volgende benadering:
+<P>&nbsp;</P>
+<UL><LI>Per perceeldeel wordt de totale nuttige oppervlakte gedeeld door het aantal woningen</LI>
+<LI>We gaan dus op deze manier impliciet van uit dat alle woningen op een perceeldeel dezelfde structuur hebben</LI></UL></TD></TR>
+<TR><TD>Aantal verdiepingen/bouwlagen</TD><TD>Het aantal bouwlagen is het aantal bovengrondse verdiepingen, inclusief het gelijkvloers en bewoonbare zolderkamer. Wanneer we spreken over verdiepingen wordt het gelijkvloers niet meegerekend.</TD></TR>
+<TR><TD>Aantal parkeerplaatsen</TD><TD>Per perceeldeel is het aantal parkeerplaatsen gekend. Door te vergelijken met het aantal woningen kunnen we uitspraken doen over het feit of er voldoende parkeerplaatsen zijn per woning. We gaan ervan uit dat er voldoende parkeerplaats is als er evenveel parkeerplaatsen als woningen zijn.</TD></TR>
+<TR><TD>Bouwwijze</TD><TD>De bouwwijze maakt in eerste instantie het onderscheid tussen eengezins- en meergezinswoningen (of appartementen).
+<P>&nbsp;</P>
+<p>Appartementen of meergezinswoningen worden als volgt bepaald:</p>
+<p><UL><LI>Indien een perceel meer dan een woning telt</LI>
+<LI>Indien de aard van een perceeldeel als appartement staat geregisteerd en er minstens een woning aanwezig is.</LI></UL></p>
+<P>&nbsp;</P>
+<p>Eengezinswoningen worden als volgt bepaald:</p>
+<p><UL><LI>Indien een perceel een woning telt en als huis geregistreerd staat</LI>
+<LI>Op basis van de gegevens met betrekking tot het constructietype kunnen we bij de eengezinswoningen een onderscheid maken tussen open, halfopen en gesloten bebouwing.</LI></UL></p>
+</TD></TR>
+<TR><TD>Bouwjaar</TD><TD>In het kadaster is het bouwjaar gekend voor de meeste perceeldelen. Op basis daarvan leiden we het bouwjaar van de woningen af. De bouwjaren zijn exact gekend vanaf 1930. Daarvoor wordt er gewerkt met periodes (<1850, 1850-1874, 1875-1899,1900-1918,1919-1930).</TD></TR>
+<TR><TD>Jaar laatste wijziging (renovatiejaar)</TD><TD>In het kadaster is sinds 1983 ook het jaar van laatste wijziging gekend voor de meeste perceeldelen. Op basis daarvan leiden we het laatste renovatiejaar van de woningen af. </TD></TR>
+<TR><TD>Aantal ongewijzigde woningen</TD><TD>Deze telling gebeurt door bouwjaar en datum laatste wijziging te combineren. Er wordt per perceeldeel gekeken wat de meest recente gekende datum is waarop er iets veranderd is aan het perceeldeel. Deze verandering kan dus zowel de bouw als een renovatie inhouden. Dit jaartal wordt toegepast op alle woningen op het perceeldeel. Bijvoorbeeld: het aantal woningen dat ongewijzigd is na de periode 1991-2000, betekent dat de betrokken woningen op een perceeldeel staan, waarop in deze periode de laatste keer is gebouwd of waarop in deze periode de laatste keer een wijziging (renovatie) heeft plaatsgevonden.</TD></TR>
+<TR><TD>Aantal inwonende eigenaars</TD><TD>Per perceeldeel zijn de eigenaars gekend. Met deze variabele wordt nagegaan in welke mate eigenaars een woning betrekken op hun eigen perceeldeel. Indien de eigenaar op het eigen perceeldeel woont waarop zich meerdere woningen bevinden, wordt een van de woningen aan de eigenaar toegekend als de woning die hij/zij zelf bewoont. Woningen die niet bewoond worden door de eigenaar betreffen zowel woningen, bewoond door huurders, leegstaande woningen of eventuele andere categorieën.</TD></TR>
+</TABLE>

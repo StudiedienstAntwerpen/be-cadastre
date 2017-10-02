@@ -1,0 +1,883 @@
+<html>
+<HEAD>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<STYLE type=text/css>
+p           {margin: 0em;} /* Marge tussen paragraven op 0 instellen */
+table.st    {border-collapse:collapse; border-top:2px outset white; border-left:2px outset white; border-right:1px outset white; border-bottom:1px outset white; text-align: right; font-family: Arial;}
+table.st th {padding:1px 5px; border:2px inset white; text-align: left; background-color: rgb(212,208,200);}
+table.st td {padding:1px 5px; border:2px inset white;}
+tr.cl       {} /* (C)olumn (L)abel : Wordt gebruikt voor het weergeven een label / naam van een kolom. */
+td.td       {font-weight: bold} /* (T)otal (D)ata : Wordt gebruikt voor het weergeven van een normaal totaal. */
+td.f        {color: gray; font-style: italic;} /* (F)orecast : Wordt gebruikt voor het weergeven van prognose data. */
+td.tf		    {color: gray; font-style: italic;} /* (T)otal (F)orecast : Wordt gebruikt voor het weergeven van een prognose - totaal. */
+td.e        {color: gray;} /* (E)stimation : Wordt gebruikt voor het weergeven van geextrapoleerde data. */
+td.te       {color: gray; font-weight: bold;} /* (T)otal (E)stimation : Wordt gebruikt voor het weergeven van een geextrapoleerd - totaal. */
+th.rl       {text-align: left;} /* (R)ow (L)abel : Wordt gebruikt voor het weergeven een label / naam van een rij. */
+th.tcl      {text-align: left;} /* (T)otal (C)olumn (L)abel : Wordt gebruikt voor het weergeven een label / naam van de totaal label kolom, de kolom met rij totalen. */
+tr.ct       {} /* (C)olumn (T)otals : Wordt gebruikt voor het weergeven van de totaal rij, de rij met kolom totalen. */
+tr.odd th   {} /* Wordt gebruikt voor het wisselen van de achtergrondkleur van een rij. De code geldt voor de heading van de even rijen in de tabel. */
+tr.odd td   {} /* Wordt gebruikt voor het wisselen van de achtergrondkleur van een rij. De code geldt voor de cellen van de even rijen in de tabel. */
+tr.even th  {} /* Wordt gebruikt voor het wisselen van de achtergrondkleur van een rij. De code geldt voor de heading van de oneven rijen in de tabel. */
+tr.even td  {} /* Wordt gebruikt voor het wisselen van de achtergrondkleur van een rij. De code geldt voor de celleen van de oneven rijen in de tabel. */
+table.tb 	 {border:0; display:inline; height:10px; margin:0px; padding:0px;} /*Wordt gebruikt bij rangorde tabellen*/
+table.tb td.tbf {background-color:#E6E6E6; border:0px none #000000; font-size:4px; height:10px; padding:0px; text-align:left; width:60px;} /*Wordt gebruikt voor de achtergrond van de grafiek bij rangorde tabellen*/
+div.tb 	 {background-color:#009DD1;font-size:4px;height:10px;margin:0px;} /* Wordt gebruikt voor de waarde van de grafiek bij rangorde tabellen*/
+</STYLE>
+<LINK rel=stylesheet type=text/css href="style/default.css">
+<META name=GENERATOR content="MSHTML 9.00.8112.16446"></HEAD>
+<body>
+
+<H1 STYLE="color: #FFFFFF; background-color: #FFA500;">
+<DIV style="MARGIN-LEFT: 110pt">Informatie gegevens woningen en percelen kadaster</H1></DIV>
+
+<h2>Algemene informatie</h2>
+
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Item</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR> <TD>Bron</TD> <TD>Kadaster</TD> </TR>
+<TR> <TD>Contactpersoon</TD> <TD><p>Kadaster</p>
+<ul><li>Informatieverzameling en -uitwisseling, dienst informatieverzameling</li>
+<li>North Galaxy</li>
+<li>Boulevard Albert II 33 bte 57</li>
+<li>1030 Brussel</li>
+<li>E-mail: <a href=mailto:datadelivery.ivu-cei.patdoc@minfin.fed.be>datadelivery.ivu-cei.patdoc@minfin.fed.be</a></li></ul>
+<P>&nbsp;</P>
+<p>Stad Antwerpen, Dienst Financiën</p>
+<ul><li>Valerie Blatter</li>
+<li>Den Bell</li>
+<li>Francis Wellesplein 1</li>
+<li>2018 Antwerpen</li>
+<li>E-mail: <a href=mailto:valerie.blatter@stad.antwerpen.be>valerie.blatter@stad.antwerpen.be</a></li>
+<li>Telefoon: (03 338) 20 53</li></ul>
+<P>&nbsp;</P>
+<p>Stad Antwerpen, Studiedienst, afdeling GIS</p>
+<ul><li>Jeffry Van Waeyenberghe</li>
+<li>Den Bell</li>
+<li>Francis Wellesplein 1</li>
+<li>2018 Antwerpen</li>
+<li>E-mail: <a href=mailto:jeffry.vanwaeyenberghe@stad.antwerpen.be>jeffry.vanwaeyenberghe@stad.antwerpen.be</a></li>
+<li>Telefoon: (03 338) 21 82</li></ul>
+</TD> </TR>
+<TR> <TD>Beschrijving bestand</TD> <TD><p>De gegevens zijn afkomstig van de kadastrale legger, die via de FOD Financiën, kadaster aan de stad Antwerpen, bedrijfseenheid Financiën wordt geleverd voor het grondgebied van de stad Antwerpen. Deze kadastrale legger bestaat uit verschillende tabellen. Voor de werking van de stad Antwerpen, studiedienst, afdeling statistiek worden uit de kadastrale legger twee tabellen als basis genomen: parcel en owner. Daarnaast wordt ook binnen GIS (Geografisch informatiesysteem) een laag van de percelen bijgehouden.</p>
+<P>&nbsp;</P>
+<li>Parcel</li>
+<P>&nbsp;</P>
+<p>Parcel of perceel bevat informatie over het perceel of perceeldeel. De velden beschrijven meer bepaald de identificatie van het deel, de aard, de ligging van het deel, materieel, de oppervlakte, bouwjaar, waarde van de grond en kadastraal inkomen. De basisvelden worden beschreven in <a href="#basisparc">de tabel "Basisvelden perceeldelen (parcel)"</a>.</p> 
+<p>Bij de basisvelden staan ook de onderdelen van de zogenaamde <b>constructiecode</b>. Deze code beschrijft de bebouwing en de constructie van het perceeldeel. Het bestaat uit volgende onderdelen (de beschrijving staat in de beschrijving van de basisvelden):
+<UL><LI>Constructionindication</LI>
+<LI>Constructiontype</LI>
+<LI>Floornumberaboveground</LI>
+<LI>Garret</LI>
+<LI>Constructionyear</LI>
+<LI>Physmodyear</LI>
+<LI>Constructionquality</LI>
+<LI>Garagenumber</LI>
+<LI>Centralheating</LI>
+<LI>Bathroomnumber</LI>
+<LI>Housingunitnumber</LI>
+<LI>Placenumber</LI>
+<LI>Builtsurface</LI>
+<LI>Usedsurface</LI></UL>
+<p>Op basis van de velden in deze tabel kunnen een aantal variabelen worden afgeleid, zoals het aantal woningen, oppervlakte, aantal kamers, parkeergelegenheden enz... Deze velden worden beschreven in <a href="#afgparc"> de tabel "Afgeleide velden perceeldelen"</a>.</p>
+<P>&nbsp;</P>
+<li>Owner</li>
+<P>&nbsp;</P>
+<p>Dit bestand betreft gegevens van de eigenaar, gekoppeld aan de eigendom. Een eigenaar kan een natuurlijke persoon zijn of een rechtspersoon. Het kan dus gaan om individuele burgers, maar ook om bedrijven, overheden, enz… Zowel de eigendommen, kunnen meerdere keren in het bestand zitten in zoverre zij meerdere eigenaars hebben, als de eigenaars, indien zij meerdere eigendommen hebben. De basisvelden in dit bestand beschrijven de id van de eigenaar: identificatiegegevens en woonplaats. Een beschrijving van de velden kan je vinden in <a href="#eigbasis">de tabel "Basisvelden eigenaars (owner)"</a>.</p>
+<p>Op basis van de velden in dit bestand kunnen gegevens afgeleid worden in welke mate perceeldelen en woningen bewoond worden door de eigenaar en welk type eigenaars eigendommen hebben in Antwerpen. Meer informatie over de afgeleide variabelen kan gevonden worden in verschillende tabellen:
+<UL><LI> <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>: deze tabel is een aanvulling van het basisbestand owner met een aantal afgeleide velden. Een belangrijk verschil met het basisbestand is dat naast de extra velden de partners van de eigenaars een eigen rij krijgen in de tabel. Dit verklaart het verschil in aantallen met het bestand owner.</LI>
+<LI><A href="#eigperc">de tabel "Afgeleide velden eigenaar (owner) op perceelsniveau</a>: deze tabel geeft een aantal afgeleide velden weer van het bestand owner op niveau van het perceel.</LI>
+<LI><A href="#eigwon">de tabel "Afgeleide velden eigenaar (owner) met betrekking tot aantal woningen op perceeldeelniveau</a>: deze tabel geeft een aantal afgeleide velden weer van het bestand owner op niveau van het perceeldeel. Meer bepaald wordt in deze afgeleide tabel het aantal woningen naar eigenaarstype bepaald en kan onder andere nagegaan worden hoeveel woningen bewoond worden door de eigenaar.</LI></UL></p>
+<P>&nbsp;</P>
+<li>Ligging percelen</li>
+<P>&nbsp;</P>
+<p>Het AGIV (Agentschap Geografische Informatie Vlaanderen) maakt een GIS-laag (kaartlaag) van de percelen op. Dit stelt gebruikers in staat de locatie van de percelen (en perceeldelen) te bepalen. Op basis van deze laag worden locatiegegevens zoals de statistische sector en wijk toegevoegd aan het bestand parcel.</p>
+</TD> </TR>
+<TR> <TD>Validiteit</TD> <TD><p>Statistisch is het de bedoeling om uit het kadaster gegevens over de woonvoorraad (woningen) en percelen te distilleren. Het gaat dan niet enkel over aantallen, maar ook over hun morfologische indeling (grootte, aanwezigheid voorzieningen,...), bezetting en functie. Hierbij moet rekening gehouden worden met volgende belangrijke aandachtspunten:</p> 
+<P>&nbsp;</P>
+<UL><LI><p>De eenheid van het bestand is niet eenduidig gericht op percelen of woningen, gezien verschillende percelen een verschillende eigendomsstructuur hebben. Alle variabelen zoals aantal woningen, aantal kamers, garages, enz... worden op perceeldeel geteld. We kunnen op deze manier wel het aantal woningen bepalen, maar de morfologie van de woningen zoals bijvoorbeeld een indeling naar aantal kamers of oppervlakte zal steeds een benadering zijn.</p></LI> 
+<P>&nbsp;</P>
+<LI><p>We hebben een zicht op de eigenaarsstructuur van de perceeldelen. Het kadaster geeft weinig zicht op de bewoning of bezetting van de woningen. We hebben via het kadaster enkel zicht of de eigenaar op zijn eigen perceeldeel woont of niet. Zo kunnen we achterhalen hoeveel woningen bewoond worden door hun eigenaar, maar we weten niet of de woningen die niet bewoond worden door de eigenaar, effectief bewoond of verhuurd worden. Het aantal huurders is op deze manier niet te bepalen.</p></LI></UL></TD> </TR>
+<TR> <TD>Betrouwbaarheid</TD> <TD>Een opmerking bij de kwaliteit van de gegevens is dat niet alle gegevens altijd goed geactualiseerd worden of dat niet alle veranderingen op een perceeldeel worden doorgegeven. Dit maakt dat in het kadaster tal van gegevens niet meer in overeenstemming zijn met de daadwerkelijke invulling van het perceeldeel. Een ander gevolg is dat bepaalde gegevens ontbreken. Tot slot zitten daardoor ook soms tegenstrijdigheden in het bestand. Zo kan de functie als woning/appartement bepaald zijn, maar wordt het aantal woningen niet geteld.</TD> </TR>
+</TABLE>
+
+<h2><a name="basisparc"></a>Basisvelden perceeldelen (parcel)</h2>
+
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Item</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>Propertysituationidf</TD><TD>ID van de eigendom. Doorgaans is dit uniek. Er zijn evenwel uitzonderingen, wanneer er verschillende Kadastrale inkomens op het betreffende perceeldeel liggen.</TD></TR>
+<TR><TD>Divcad </TD><TD>kadastrale afdeling</TD></TR>
+<TR><TD>Section</TD><TD>sectie</TD></TR>
+<TR><TD>Primarynumber</TD><TD>grondnr</TD></TR>
+<TR><TD>Bisnumber</TD><TD>bisnr</TD></TR>
+<TR><TD>Exponentletter</TD><TD>letterexp</TD></TR>
+<TR><TD>Exponentnumber</TD><TD>cijferexp</TD></TR>
+<TR><TD>Partnumber</TD><TD>partitienr (P0000->P9999)</TD></TR>
+<TR><TD>Capakey</TD><TD>alternatieve vorm perceelnummer. Dit perceelsnummer wordt als unieke sleutel gebruikt in de GISlaag.</TD></TR>
+<TR><TD>Order</TD><TD>Volgnummer van de verschillende onderdelen van de eigendom</TD></TR>
+<TR><TD>Nature</TD><TD>code kadastrale aard. Dit geeft een indicatie van de invulling of functionaliteit van het perceeldeel. Een overzicht van alle mogelijke inullingen/functionaliteiten kan in <a href="#aard">deze tabel</a> gevonden worden.</TD></TR>
+<TR><TD>Descriptprivate</TD><TD>beschrijving privatief deel. Dit is een code die een beschrijving geeft van de invulling van delen, bestemd voor residentieel of commercieel gebruik. Deze code is een samenstelling van verschillende subcodes, die beschreven staan in <a href="#privaat">deze tabel</a>.</TD></TR>
+<TR><TD>Block</TD><TD>bloknummer</TD></TR>
+<TR><TD>Floor</TD><TD>verdieping</TD></TR>
+<TR><TD>Floorsituation</TD><TD>beschrijving ligging privatief deel op de verdieping</TD></TR>
+<TR><TD>Crossdetail</TD><TD>detail delen van gebouwen opgericht schrijlings op een grens van kadastrale afdelingen of op een grens van percelen die aan verschillende eigenaars toebehoren</TD></TR>
+<TR><TD>Matutil</TD><TD>Bijkomende aard materieel en outillering</TD></TR>
+<TR><TD>Nottaxedmatutil</TD><TD>Niet belastbaar materieel en outillering</TD></TR>
+<TR><TD>Niscom</TD><TD>Nr. en naam van de administratieve gemeente (NIS)</TD></TR>
+<TR><TD>Street/Situation</TD><TD>straatnaam/plaatsnaam</TD></TR>
+<TR><TD>Street Translation</TD><TD>vertaling straatnaam (Brussel)</TD></TR>
+<TR><TD>Number</TD><TD>huisnummer</TD></TR>
+<TR><TD>Polwa</TD><TD>code kadastrale afdeling en code Polders en Wateringen</TD></TR>
+<TR><TD>Surfacenottaxable</TD><TD>niet belastbare oppervlakte</TD></TR>
+<TR><TD>Surfacetaxable</TD><TD>belastbare oppervlakte</TD></TR>
+<TR><TD>Surfaceverif</TD><TD>code validatie van de oppervlakte</TD></TR>
+<TR><TD>Constructionyear</TD><TD>code bouwjaar</TD></TR>
+<TR><TD>Soilindex</TD><TD>indicie van de waarde van de grond</TD></TR>
+<TR><TD>Soilrent</TD><TD>huurwaardering van de grond</TD></TR>
+<TR><TD>Cadastralincomepersurface</TD><TD>kadastraal inkomen per hectare</TD></TR>
+<TR><TD>Cadastralincomepersurfaceotherdivision</TD><TD>aanduiding kadastraal inkomen per hectare afkomstig van andere kadastrale afdeling</TD></TR>
+<TR><TD>Numbercadastralincome</TD><TD>code type van goed voor het kadastrale inkomen (gewoon, nijverheid, ...) (cijfercode)</TD></TR>
+<TR><TD>Charcadastralincome</TD><TD>code fiscaal statuut van het kadastraal inkomen (lettercode)</TD></TR>
+<TR><TD>Cadastralincome</TD><TD>kadastraal inkomen</TD></TR>
+<TR><TD>Dateendexoneration</TD><TD>datum einde vrijstelling</TD></TR>
+<TR><TD>Decrete</TD><TD>code  decreet (vrijstelling van het kadastraal inkomen)</TD></TR>
+<TR><TD>Datesituation</TD><TD>Datum toestand</TD></TR>
+<TR><TD>Constructionindication</TD><TD>Dit veld is onderdeel van de constructiecode. Dit geeft de algemene invulling van de bebouwing op het perceeldeel weer. Meestal gaat dit over het type gebouw en de functie ervan. De verschillende categorieën kunnen gevonden worden in <a href="#constrind">deze tabel</a>.</TR>
+<TR><TD>Constructiontype</TD><TD>Dit veld is onderdeel van de contructiecode. Deze variabele geeft aan of het gesloten, halfopen of open bebouwing is (in hoeverre sluiten gebouwen op elkaar aan).</TD></TR>
+<TR><TD>Floornumberaboveground</TD><TD>Dit veld is onderdeel van de constructiecode. Het geeft het aantal bouwlagen boven de grond (inclusief gelijkvloers) van het perceel deel aan.</TD></TR>
+<TR><TD>Garret</TD><TD>Dit veld is onderdeel van de constructiecode. Deze variabele geeft aan of er een bewoonbare dakverdieping aanwezig is</TD></TR>
+<TR><TD>Constructionyear</TD><TD>Dit veld is onderdeel van de constructiecode. Het gaat hier om de code bouwjaar. Vanaf 1930 gaat dit om het exacte bouwjaar. Voor 1930 worden enkel periodes weergegeven (<1850, 1850-1874, 1875-1899,1900-1918,1919-1930).</TD></TR>
+<TR><TD>hysmodyear</TD><TD>Dit veld is onderdeel van de constructiecode. Deze variabele geeft (de code van) het jaar laatste wijziging weer. Dit jaar is bekend sinds 1982.</TD></TR>
+<TR><TD>Constructionquality</TD><TD>Dit veld is onderdeel van de constructiecode. Het geeft de kwaliteit van het gebouw weer en neemt het type woning en de omgeving (buurt) in rekening: bijvoorbeeld een villa in een wijk, die gedomineerd wordt door appartementen, wordt als luxueus beschouwd. Een villa die zich in een villawijk bevindt, zal eerder het etiket normaal krijgen. Het gaat dus niet over de intrinsieke kwaliteit van het perceeldeel. Deze variabele kan drie waarden aannemen:
+<UL><LI>M: minderwaardig</LI>
+<LI>N: normaal</LI>
+<LI>L: luxueus</LI></UL></TD></TR>
+<TR><TD>Garagenumber</TD><TD>Dit veld is onderdeel van de constructiecode. Het heeft het aantal parkeerplaatsen/garages weer.</TD></TR>
+<TR><TD>Centralheating</TD><TD>Dit veld is onderdeel van de constructiecode. Deze variabele geeft aan of er centrale verwarming is of niet.</TD></TR>
+<TR><TD>Bathroomnumber</TD><TD>Dit veld is onderdeel van de constructiecode. Deze variabel geeft het aantal badkamers weer.</TD></TR>
+<TR><TD>Housingunitnumber</TD><TD>Dit veld is onderdeel van de constructiecode. Deze variabele telt het aantal woongelegenheden.</TD></TR>
+<TR><TD>Placeunitnumber</TD><TD>Dit veld is onderdeel van de constructiecode. Deze variabele telt het aantal woonvertrekken (kamers) die bedoeld zijn voor de essentiële levensfuncties (eten, rust, ontspanning, studie,…). Dit zijn dus kamers, met uitzondering van kamers zoals bijvoorbeeld opbergruimtes, …</TD></TR>
+<TR><TD>Builtsurface</TD><TD>Dit veld is onderdeel van de constructiecode. Deze variabele geeft de bebouwde oppervlakte weer, met uitzondering van binnenplaatsen, doorgangen, toegangen, enz…</TD></TR>
+<TR><TD>Usedsurface</TD><TD>Dit veld is onderdeel van de constructiecode. Deze variabele geeft de nuttige oppervlakte weer, dat is de oppervlakte die ingenomen wordt door vetrekken die bedoeld zijn voor essentiële levensfuncties.</TD></TR>
+</TABLE>
+
+<h2><a name="afgparc"></a>Afgeleide velden perceeldelen (parcel)</h2>
+
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Item</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>Postcode_Da</TD><TD>Dit is de postcode waarin het perceeldeel gelegen is. Deze postcode is afgeleid van de variabele Divcat of de kadastrale afdeling.</TD></TR>
+<TR><TD>Statsec</TD><TD>De statistische sector waarin het perceeldeel gelegen is. Deze variabele is toegevoegd via GIS. Via de GIS-laag van de percelen werd aan elk perceel de statistische sector gekoppeld waarin deze gelegen is. Via de Capakey wordt deze statistische sector vervolgens gekoppeld aan de tabel parcel of perceeldelen.</TD></TR>
+<TR><TD>Wijkcode</TD><TD>Dit is de code van de wijk (wijkindeling van de stad Antwerpen, Studiedienst) waarin het perceeldeel gelegen is. Deze wijken worden samengesteld op basis van de statistische sectoren. De toewijzing aan wijken gebeurt hier niet door een hercodering van de statistische sectoren, maar op basis van een GIS-analyse.</TD></TR>
+<TR><TD>Postzone_Statsec</TD><TD>Dit is postcode waarin het perceeldeel gelegen is. Deze postcode is afgeleid van de statistische sector.</TD></TR>
+<TR><TD>Oppervlakte_Perceel_Gis</TD><TD>Dit is de oppervlakte van het perceel, gebaseerd op de GIS-laag van de percelen. Deze oppervlakte wordt via de capakey gekoppeld aan de tabel parcel of perceeldelen.</TD></TR>
+<TR><TD>Juridische_Oppervlakte_Perceel</TD><TD>Dit is de optelling van de belastbare (Surfacetaxable)  en de niet belastbare oppervlakte (Surfacenottaxable).</TD></TR>
+<TR><TD>Jur_Opp_Belastbaar_Perceel</TD><TD>Dit is de belastbare oppervlakte (aanpassing op Surfacetaxable).</TD></TR>
+<TR><TD>Jur_Opp_Onbelastbaar_Perceel</TD><TD>Dit is de niet belastbare oppervlakte (aanpassing op Surfacenottaxable).</TD></TR>
+<TR><TD>Classificatiecode</TD><TD>Dit is een kopie van de ConstructionIndication.</TD></TR>
+<TR><TD>Classificatie_Eenvoudig</TD><TD>Dit is de classificatiecode in grotere categorieën. Deze categorieën staan in <a href="#classeenv">volgende tabel</a>.</TD></TR>
+<TR><TD>Perceel_Gebruik</TD><TD>Dit is de classificatiecode in grotere categorieën. Er gebeurt hier onder andere een herindeling van de appartementen. Deze categorieën staan in <a href="#percgebr">volgende tabel</a>.</TD></TR>
+<TR><TD>App_Lift</TD><TD>Deze variabele geeft aan of er een lift aanwezig is of niet. Dit wordt afgeleid uit de classificatiecode.</TD></TR>
+<TR><TD>Type_Constructie</TD><TD>Dit is een aangepaste kopie van de ContructionType</TD></TR>
+<TR><TD>N_Verdiep</TD><TD>Dit is de variabele FloorNumberAboveground (aantal bouwlagen) minus een bouwlaag. Het gelijkvloers wordt niet als verdieping meegeteld. Deze variabele is een tussenstap om tot het totaal aantal verdiepen te komen.</TD></TR>
+"<TR><TD>Verdiep</TD><TD>Verdiepen worden in eerste instantie berekend op basis van Floornumberaboveground (=bouwlagen). Verdiepen is deze variabele-1, omdat we het gelijkvloers niet meetellen als verdiep. Het eindresultaat is op perceelniveau. Binnen een perceel met meerdere perceeldelen wordt het maximum Floornumberaboveground genomen. 
+Indien het aantal verdiepen obv Floornumberaboveground niet gekend is, gaan we binnen het bestand Parcel kijken naar de variabele Descriptprivate. Daarin wordt aan de hand van een samengestelde code beschreven hoe de samenstelling is van het privatieve deel. Hierin zit soms ook een cijfer vervat dat verwijst naar het verdiep waarop het goed ligt. Deze variabele is een tussenstap om tot het totaal aantal verdiepen te komen.
+</TD></TR>
+<TR><TD>Aard</TD><TD>Aard is het onderdeel van de variabele DescriptPrivate dat verwijst naar het soort van invulling op het perceeldeel. De categorieën staan in <a href="#aard">deze tabel</a></TD></TR>
+<TR><TD>Bewoonbare_Dakverdieping</TD><TD>Kopie van de variabele dakverdieping</TD></TR>
+<TR><TD>Verdiepen_Perceel</TD><TD>Deze variabele geeft aan hoeveel verdiepen er zijn en is het resultaat van een keuze die wordt gemaakt tussen de variabelen n_verdiep en verdiep. In principe wordt indien voor beide een waarde bestaat, de hoogste waarde gekozen. Indien maar een van beide gekend is, wordt deze waarde genomen. Deze variabele is een tussenstap om tot het totaal aantal verdiepen te komen.</TD></TR>
+<TR><TD>Verdiepen_Inc_Dakverdiep</TD><TD>We tellen bij de verdiepen de zolderkamer erbij, indien er een is om zo tot het definitief aantal verdiepen te komen.</TD></TR>
+<TR><TD>Bouwjaar_Ruw</TD><TD>Dit is een kopie van de variabele ConstructionYear</TD></TR>
+<TR><TD>Bouwjaar_Cat</TD><TD>Dit is het bouwjaar_ruw in categorieën.</TD></TR>
+<TR><TD>Bouwjaar_Schatting</TD><TD>Dit is een kopie van de variabele ConstructionYear. Voor de jaren voor 1930 waarvan enkel een periode in categorieën gekend is, wordt het middelste jaar van de periode genomen.</TD></TR>
+<TR><TD>Bouwjaar_Exact</TD><TD>Dit is een kopie van bouwjaar_ruw, maar wordt er is enkel een waarde gegeven wanneer het jaar exact gekend is, in casu vanaf 1930.</TD></TR>
+<TR><TD>Jaar_Wijziging</TD><TD>Dit is een kopie van de variabele PhysModYear</TD></TR>
+<TR><TD>Jaar_Wijziging_Cat</TD><TD>Dit is het bouwjaar_ruw in categorieën.</TD></TR>
+<TR><TD>Kwaliteit</TD><TD>Dit is een kopie van de variabele ConstructionQuality.</TD></TR>
+<TR><TD>Aard_Garage</TD><TD>Dit geeft aan hoeveel garages aanwezig zijn. Deze variabele is gebaseerd op de variabele aard en garageNumber. Een garage is een afgesloten parkeereenheid met garagepoort.</TD></TR>
+<TR><TD>Aard_Standplaats</TD><TD>Dit geeft aan hoeveel standplaatsen aanwezig zijn. Deze variabele is gebaseerd op de variabele aard. Een standplaats of autostaanplaats is een overdekte parkeereenheid zonder poort .</TD></TR>
+<TR><TD>Aard_Parking</TD><TD>Dit geeft aan hoeveel parkings aanwezig is. Deze variabele is gebaseerd op de variabele aard en garageNumber. Een parking of parkeerplaats is een niet overdekte parkeereenheid met garagepoort.</TD></TR>
+<TR><TD>Aantal_Parkeerplaatsen</TD><TD>Dit geeft aan hoeveel parkeerplaatsen aanwezig zijn. Deze variabele is gebaseerd op de variabele aard en garageNumber. Normaal gezien neemt deze de waarde aan van de variabele garageNumber. Indien deze niet ingevuld is, maar de aard wijst toch op de aanwezigheid van een parkeerplaats, dan wordt er een parkeerplaats geteld.</TD></TR>
+<TR><TD>Parking_Onbekend_Type</TD><TD>Dit geeft aan hoeveel parkeerplaatsen aanwezig zijn zonder dat het type parkeerplaats bekend is. Deze variabele is gebaseerd op de variabele aard en garageNumber.</TD></TR>
+<TR><TD>Centrale_Verwarming</TD><TD>Kopie van de variabele Centralheating</TD></TR>
+<TR><TD>Aantal_Badkamers</TD><TD>Kopie van de variabele Bathroomnumber</TD></TR>
+<TR><TD>Aantal_Woningen_Cc11</TD><TD>Dit is een kopie van de HousingunitNumber.</TD></TR>
+<TR><TD>Cc01_Woontype</TD><TD>Indien de classificatiecode wijst op een appartement, appartementsgebouw of huis, dan wordt deze variabele gelijkgesteld met 1.</TD></TR>
+<TR><TD>Woning_Aard</TD><TD>Afgeleide van de variabele aard. Als de aard wijst op wooneenheid, wordt Woning_aard gelijkgesteld met 1.</TD></TR>
+<TR><TD>Woningen</TD><TD>Dit is de definitieve variabele die het aantal woningen telt. Het is een combinatie van de velden perceel_gebruik, aantal woningen_cc11 en woning_aard.</TD></TR>
+<TR><TD>Aantal_Kamers</TD><TD>Dit is het aantal kamers, berekend op basis van de variabele PlaceNumber. Deze wordt enkel berekend als het aantal woningen (variabele woningen) groter is dan 0.</TD></TR>
+<TR><TD>Kamers_Per_Woning</TD><TD>Dit is her aantal kamers (aantal_kamers) gedeeld door het aantal woningen (woningen). Dit geeft dus per perceeldeel het gemiddeld aantal kamers per woning.</TD></TR>
+<TR><TD>Kamers_Niet_Woning</TD><TD>Dit is het aantal kamers, berekend op basis van de variabele Placenumber. Deze wordt enkel berekend als er geen woningen zijn. Dit is het aantal kamers in perceeldelen met een andere functie dan wonen.</TD></TR>
+<TR><TD>Bebouwde_Oppervlakte_Origineel</TD><TD>Dit is een kopie van de variabele BuiltSurface.</TD></TR>
+<TR><TD>Nuttige_Oppervlakte_Origineel</TD><TD>Dit is een kopie van de variabele UsedSurface.</TD></TR>
+<TR><TD>Bebouwde_Oppervlakte</TD><TD>Dit is een kopie van Bebouwde_Oppervlakte_Origineel, met een aanpassing op basis van de juridische_oppervlakte_perceel of de gis_oppervlakte_perceel. Indien de bebouwde oppervlakte meer dan 2 keer zo groot is als de maximumwaarde van de juridische of GIS-oppervlakte, wordt de bebouwde oppervlakte niet berekend.</TD></TR>
+<TR><TD>Nuttige_Oppervlakte</TD><TD>Dit is een kopie van Nuttige_Oppervlakte_Origineel, met een aanpassing op basis van het aantal verdiepen (verdiepen_inc_dakverdiep), de juridische_oppervlakte_perceel of de gis_oppervlakte_perceel. Indien de bebouwde oppervlakte meer dan 2 keer zo groot is als de maximumwaarde van de juridische of GIS-oppervlakte vermenigvuldigd met het aantal bouwlagen (verdiepen_inc_dakverdiep+1), wordt de bebouwde oppervlakte niet berekend.</TD></TR>
+<TR><TD>Kelder</TD><TD>Deze variabele geeft aan of er een kelder aanwezig is. Zij is gebaseerd op de variabele classificatiecode en aard.</TD></TR>
+<TR><TD>Nis_Hoofdgroep</TD><TD>Dit is een herindeling van de variabele nature in grotere categorieën. In <a href="#hoofdgroep">deze tabel</a> kunnen de categorieën geraadpleegd worden.</TD></TR>
+<TR><TD>Nis_App_Building</TD><TD>Dit is een herindeling van de variabele NIS_hoofdgroep en geeft aan of het over een appartement/building gaat of niet.</TD></TR>
+<TR><TD>Nis_Huis_Hoeve</TD><TD>Dit is een herindeling van de variabele NIS_hoofdgroep en geeft aan of het over een huis/hoeve gaat of niet.</TD></TR>
+<TR><TD>Nis_Industrie</TD><TD>Dit is een herindeling van de variabele NIS_hoofdgroep en geeft aan of het over een industrieel pand gaat of niet.</TD></TR>
+<TR><TD>Nis_Opslag</TD><TD>Dit is een herindeling van de variabele NIS_hoofdgroep en geeft aan of het over een opslagplaats gaat of niet.</TD></TR>
+<TR><TD>Nis_Kantoor</TD><TD>Dit is een herindeling van de variabele NIS_hoofdgroep en geeft aan of het over een Kantoor gaat of niet.</TD></TR>
+<TR><TD>Nis_Commercieel</TD><TD>Dit is een herindeling van de variabele NIS_hoofdgroep en geeft aan of het over een commerciële invulling gaat of niet.</TD></TR>
+<TR><TD>Nis_Ander</TD><TD>Dit is een herindeling van de variabele NIS_hoofdgroep en geeft aan of het over een andere invulling gaat of niet.</TD></TR>
+<TR><TD>Nis_Onbebouwd</TD><TD>Dit is een herindeling van de variabele NIS_hoofdgroep en geeft aan of het over een onbebouwd perceel gaat of niet.</TD></TR>
+<TR><TD>Nis_Niettoegekend</TD><TD>Dit is een herindeling van de variabele NIS_hoofdgroep en geeft aan of het over een perceel zonder bekende functie gaat of niet.</TD></TR>
+<TR><TD>Ki_Belastbaar</TD><TD>Dit is het kadastraal inkomen (CadastralIncome) indien de variabele CharCadastralIncome wijst op het feit dat dit kadastraal inkomen belastbaar is.</TD></TR>
+<TR><TD>Ki_Onbelastbaar</TD><TD>Dit is het kadastraal inkomen (CadastralIncome) indien de variabele CharCadastralIncome wijst op het feit dat dit kadastraal inkomen niet belastbaar is.</TD></TR>
+<TR><TD>Nis_Rubriek</TD><TD>Dit is een herindeling van de variabele nature in grotere categorieën. In <a href="#nisrubriek">deze tabel</a> kunnen de categorieën geraadpleegd worden.</TD></TR>
+</TABLE>
+<h2><a name="eigbasis"></a>Basisvelden eigenaars (owner)</h2>
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Item</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>propertySituationIdf</TD><TD>ID van de eigendomstoestand. Deze kan verschillende keren terugkomen, naargelang er verschillende eigenaars zijn.</TD></TR>
+<TR><TD>order</TD><TD>Volgnummer van de eigenaar.</TD></TR>
+<TR><TD>partyType</TD><TD>type eigenaar. De verschillende types kunnen in <a href="#eigtype">deze tabel</a> geraadpleegd worden.</TD></TR>
+<TR><TD>right</TD><TD>zakelijk recht. De Nederlandstalige categorieën staan in <a href="#zakrecht">deze tabel</a>. De getallen verwijzen naar een verdeelsleutel van de eigendom, indien de eigendom in handen is van meerdere eigenaars. Er staat mogelijk ook een datum bij wanneer het recht eindigt.</TD></TR>
+<TR><TD>right_trad</TD><TD>zakelijk recht (vertaling): dit is de vertaling van het veld right in het Nederlands of het Frans, naargelang de taal waarin right is opgesteld. De Nederlandstalige categorieën staan in <a href="#zakrecht">deze tabel</a>.</TD></TR>
+<TR><TD>managedBy</TD><TD>beherende dienst (true/false)</TD></TR>
+<TR><TD>officialId</TD><TD>officiële identificatienummer van de natuurlijke persoon/rechtspersoon. Dit kan een rijksregisternummer zijn in het geval van een natuurlijke persoon of een KBO-nummer in het geval van een rechtspersoon.</TD></TR>
+<TR><TD>name</TD><TD>naam</TD></TR>
+<TR><TD>firstname</TD><TD>voornaam</TD></TR>
+<TR><TD>birthdate</TD><TD>geboortedatum</TD></TR>
+<TR><TD>country</TD><TD>land </TD></TR>
+<TR><TD>zipCode</TD><TD>postcode</TD></TR>
+<TR><TD>municipality_fr</TD><TD>administratieve gemeente (in het Frans)</TD></TR>
+<TR><TD>municipality_nl</TD><TD>administratieve gemeente (in het Nederlands)</TD></TR>
+<TR><TD>street_fr</TD><TD>straatnaam (in het Frans)</TD></TR>
+<TR><TD>street_nl</TD><TD>straatnaam (in het Nederlands)</TD></TR>
+<TR><TD>number</TD><TD>huisnummer</TD></TR>
+<TR><TD>boxNumber</TD><TD>Busnummer</TD></TR>
+<TR><TD>officialId_partner</TD><TD>officieel identificatienummer van de natuurlijke persoon (partner) (rijksregisternummer)</TD></TR>
+<TR><TD>name_partner</TD><TD>naam</TD></TR>
+<TR><TD>firstName_partner</TD><TD>voornaam</TD></TR>
+<TR><TD>birthdate_partner</TD><TD>geboortedatum</TD></TR>
+<TR><TD>country_partner</TD><TD>land</TD></TR>
+<TR><TD>zipCode_partner</TD><TD>postcode</TD></TR>
+<TR><TD>municipality_partner_fr</TD><TD>administratieve gemeente (in het Frans)</TD></TR>
+<TR><TD>municipality_partner_nl</TD><TD>administratieve gemeente (in het Nederlands)</TD></TR>
+<TR><TD>street_partner_fr</TD><TD>straatnaam (in het Frans)</TD></TR>
+<TR><TD>street_partner_nl</TD><TD>straatnaam (in het Nederlands)</TD></TR>
+<TR><TD>number_partner</TD><TD>huisnummer</TD></TR>
+<TR><TD>boxNumber_partner</TD><TD>Busnummer</TD></TR>
+<TR><TD>coOwner</TD><TD>String van de mede-eigenaars zonder zakelijk recht (geen naam) (bvb: EN KINDEREN)</TD></TR>
+<TR><TD>anonymousOwner</TD><TD>string van anonieme eigenaars + zakelijke rechten (bvb: # en 2 RECHTHEBBENDEN -BE 1/4- #)</TD></TR>
+<TR><TD>dateSituation</TD><TD>Datum toestand</TD></TR>
+</TABLE>
+<h2><a name="eigafg"></a>Afgeleide velden eigenaars (owner)</h2>
+
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Item</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>eig_pc</TD><TD>Kopie van de postcode (numerieke versie)</TD></TR>
+<TR><TD>antwerpenaar</TD><TD>Deze variabele geeft aan op basis van de postcode van de eigenaar of hij/zij in Antwerpen woont.</TD></TR>
+<TR><TD>overheidseigenaar</TD><TD>Op basis van de koppeling aan een lijst van overheidseigenaars (zoals verzameld door SSO) wordt bepaald of de eigenaar in kwestie een overheidseigenaar is.</TD></TR>
+<TR><TD>type_eigenaar</TD><TD>Op basis van de variabelen antwerpenaar, inwonende_eigenaar, overheidseigenaar en de KBO-nummers die overeenkomen met de KBO-nummers van sociale huisvestingsmaatschappijen wordt de volgende typologie van eigenaars onderscheiden: 
+<UL><LI>0 inwonende eigenaar</LI>
+<LI>1 niet-inwonende Antwerps persoon</LI>
+<LI>2 niet-Antwerps persoon</LI>
+<LI>3 sociale eigenaar</LI>
+<LI>4 andere overheid</LI>
+<LI>5 private rechtspersoon</LI></UL></TD></TR>"
+<TR><TD>natuurlijk_rechtspersoon</TD><TD>Op basis van de variabele type_eigenaar maken we een classificatie of het om een natuurlijke persoon of rechtspersoon gaat.</TD></TR>
+<TR><TD>rechtspersoon</TD><TD>Deze variabele geeft aan of het om een rechtspersoon (organisaties) gaat of niet.</TD></TR>
+<TR><TD>sociale_woning_eigenaar</TD><TD>Deze variabele geeft aan of het om een eigenaar van sociale woningen is of m.a.w. sociale huisvestingsmaatschappijen.</TD></TR>
+<TR><TD>rr</TD><TD>Dit is het rijksregisternummer, indien het natuurlijke personen betreft.</TD></TR>
+<TR><TD>geslacht</TD><TD>Op basis van de rijksregisternummer kan het geslacht bepaald worden. De drie cijfers na de geboortedatum vormen een volgnummer. Indien deze volgnummer op een even getal eindigt, gaat het om een vrouw, indien het oneven is, dan gaat het om een man.</TD></TR>
+<TR><TD>geboortejaar</TD><TD>Op basis van de rijksregisternummer kan het geboortejaar bepaald worden. De eerste reeks cijfers vormen de geboortedatum.</TD></TR>
+<TR><TD>inwonende_eigenaar</TD><TD>Op basis de vergelijking tussen het adres van de eigenaar en het adres van het perceeldeel, kan bepaald worden of de eigenaar op zijn eigen perceeldeel woont. Deze vergelijking gaat gepaard met enige ruis, omdat de adresnotering van eigenaars en die van de perceeldelen sterk verschilt.</TD></TR>
+<TR><TD>right_verdeelsleutel</TD><TD>Dit is een opgekuiste versie van de variabele right.</TD></TR>
+<TR><TD>right_einderecht</TD><TD>Dit geeft het jaar aan waarop het zakelijk recht op de eigendom eindigt.</TD></TR>
+<TR><TD>right_omschrijving_deel_1</TD><TD>Dit geeft de omschrijving weer van het zakelijk recht zonder verdeelsleutel en datum einde recht. De Nederlandstalige categorieën staan in <a href="#zakrecht">deze tabel</a>.</TD></TR>
+<TR><TD>right_teller_deel_1</TD><TD>Dit is de teller van de verdeelsleutel.</TD></TR>
+<TR><TD>right_noemer_1</TD><TD>Dit is de noemer van de verdeelsleutel.</TD></TR>
+<TR><TD>right_omschrijving_deel_2</TD><TD>Soms staat in de variabele right een tweede zakelijk recht. Dit geeft de omschrijving weer van het tweede zakelijk recht zonder verdeelsleutel en datum einde recht. De Nederlandstalige categorieën staan in <a href="#zakrecht">deze tabel</a>.</TD></TR>
+<TR><TD>right_teller_deel_2</TD><TD>Dit is de teller van de eventuele tweede verdeelsleutel.</TD></TR>
+<TR><TD>right_noemer_2</TD><TD>Dit is de noemer van de eventuele tweede verdeelsleutel.</TD></TR>
+<TR><TD>breuk_verdeling</TD><TD>Dit geeft het aandeel van de eigenaar weer in de eigendom van het perceeldeel. In principe is komt dit tot stand door right_teller_deel_1 te delen door right_noemer_deel_1. Dit wordt gecorrigeerd door enkel deze records in rekening te nemen waar het effectief om een eigendom gaat (geen erfpacht, niet bij managers,...) en door ook het tweede zakelijk recht in rekening te brengen, als dit er is.</TD></TR>
+<TR><TD>owner_classificatie</TD><TD>Dit is een classificatie van eigenaars. Partners van eigenaars worden hier mee in gerekend. 
+<UL><LI>0 Gewone eigenaar</LI>
+<LI>1 Eigenaar met partner</LI>
+<LI>2 Partner van de eigenaar</LI>
+<LI>3 Eigenaar met gekende manager</LI>
+<LI>4 Manager, geen eigenaar</LI></UL></TD></TR>
+<TR><TD>breuk_verdeling_partners</TD><TD>Dit is dezelfde variabele als breuk_verdeling met dat verschil dat hier rekening wordt gehouden met de partner. Indien er een partner is wordt de breuk_verdeling van de eigenaar door 2 gedeeld en wordt de andere helft toegekend aan de partner.</TD></TR>
+<TR><TD>capakey</TD><TD>Deze variabele wordt overgenomen uit en staat beschreven in <a href="#basisparc">de tabel "Basisvelden perceeldelen (parcel)"</a>.</TD></TR>
+<TR><TD>woningen</TD><TD>Deze variabele wordt overgenomen uit en staat beschreven in <a href="#afgparc"> de tabel "Afgeleide velden perceeldelen"</a>.</TD></TR>
+<TR><TD>KI_belastbaar</TD><TD>Deze variabele wordt overgenomen uit en staat beschreven in <a href="#afgparc"> de tabel "Afgeleide velden perceeldelen"</a>.</TD></TR>
+<TR><TD>KI_onbelastbaar</TD><TD>Deze variabele wordt overgenomen uit en staat beschreven in <a href="#afgparc"> de tabel "Afgeleide velden perceeldelen"</a>.</TD></TR>
+</TABLE>
+
+<h2><a name="eigperc"></a>Afgeleide velden eigenaars (owner) op perceelsniveau</h2>
+
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Item</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>capakey</TD><TD>Deze variabele wordt overgenomen uit en staat beschreven in <a href="#basisparc">de tabel "Basisvelden perceeldelen (parcel)"</a>.</TD></TR>
+<TR><TD>KI_belastbaar</TD><TD>Deze variabele wordt overgenomen uit en staat beschreven in <a href="#afgparc"> de tabel "Afgeleide velden perceeldelen"</a>. Het gaat meerbepaald om de som van de belastbare kadastrale inkomens van alle perceeldelen op perceelsniveau.</TD></TR>
+<TR><TD>KI_onbelastbaar</TD><TD>Deze variabele wordt overgenomen uit en staat beschreven in <a href="#afgparc"> de tabel "Afgeleide velden perceeldelen"</a>. Het gaat meerbepaald om de som van de niet belastbare kadastrale inkomens van alle perceeldelen op perceelsniveau.</TD></TR>
+<TR><TD>KI_b_aandeel_inwonendantwerps_persoon</TD><TD>Deze variabele is afgeleid van het veld breuk_verdeling, KI_belastbaar en type_eigenaar. uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Dit is het deel van het belastbaar kadastraal inkomen dat voor het betreffende perceel wordt toegekend aan inwonende eigenaars. Dit deel wordt bepaald door de breuk_verdeling.</TD></TR>
+<TR><TD>KI_b_aandeel_antwerps_persoon</TD><TD>Deze variabele is afgeleid van het veld breuk_verdeling, KI_belastbaar en type_eigenaar. uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Dit is het deel van het belastbaar kadastraal inkomen dat voor het betreffende perceel wordt toegekend aan niet inwonende Antwerpse eigenaars. Dit deel wordt bepaald door de breuk_verdeling.</TD></TR>
+<TR><TD>KI_b_aandeel_nietantwerps_persoon</TD><TD>Deze variabele is afgeleid van het veld breuk_verdeling, KI_belastbaar en type_eigenaar. uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Dit is het deel van het belastbaar kadastraal inkomen dat voor het betreffende perceel wordt toegekend aan niet inwonende niet Antwerpse eigenaars. Dit deel wordt bepaald door de breuk_verdeling.</TD></TR>
+<TR><TD>KI_b_aandeel_sociale_eigendom</TD><TD>Deze variabele is afgeleid van het veld breuk_verdeling, KI_belastbaar en type_eigenaar. uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Dit is het deel van het belastbaar kadastraal inkomen dat voor het betreffende perceel wordt toegekend aan sociale eigenaars. Dit deel wordt bepaald door de breuk_verdeling.</TD></TR>
+<TR><TD>KI_b_aandeel_ander_overheid</TD><TD>Deze variabele is afgeleid van het veld breuk_verdeling, KI_belastbaar en type_eigenaar. uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Dit is het deel van het belastbaar kadastraal inkomen dat voor het betreffende perceel wordt toegekend aan overheidseigenaars. Dit deel wordt bepaald door de breuk_verdeling.</TD></TR>
+<TR><TD>KI_b_aandeel_privaat_rechtspersoon</TD><TD>Deze variabele is afgeleid van het veld breuk_verdeling, KI_belastbaar en type_eigenaar. uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Dit is het deel van het belastbaar kadastraal inkomen dat voor het betreffende perceel wordt toegekend aan eigenaars die onder de categorie private rechtspersonen vallen. Dit deel wordt bepaald door de breuk_verdeling.</TD></TR>
+<TR><TD>KI_onb_aandeel_inwonendantwerps_persoon</TD><TD>Deze variabele is afgeleid van het veld breuk_verdeling, KI_belastbaar en type_eigenaar. uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Dit is het deel van het onbelastbaar kadastraal inkomen dat voor het betreffende perceel wordt toegekend aan inwonende eigenaars. Dit deel wordt bepaald door de breuk_verdeling.</TD></TR>
+<TR><TD>KI_onb_aandeel_antwerps_persoon</TD><TD>Deze variabele is afgeleid van het veld breuk_verdeling, KI_belastbaar en type_eigenaar. uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Dit is het deel van het onbelastbaar kadastraal inkomen dat voor het betreffende perceel wordt toegekend aan niet inwonende Antwerpse eigenaars. Dit deel wordt bepaald door de breuk_verdeling.</TD></TR>
+<TR><TD>KI_onb_aandeel_nietantwerps_persoon</TD><TD>Deze variabele is afgeleid van het veld breuk_verdeling, KI_belastbaar en type_eigenaar. uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Dit is het deel van het onbelastbaar kadastraal inkomen dat voor het betreffende perceel wordt toegekend aan niet inwonende niet Antwerpse eigenaars. Dit deel wordt bepaald door de breuk_verdeling.</TD></TR>
+<TR><TD>KI_onb_aandeel_sociale_eigendom</TD><TD>Deze variabele is afgeleid van het veld breuk_verdeling, KI_belastbaar en type_eigenaar. uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Dit is het deel van het onbelastbaar kadastraal inkomen dat voor het betreffende perceel wordt toegekend aan sociale eigenaars. Dit deel wordt bepaald door de breuk_verdeling.</TD></TR>
+<TR><TD>KI_onb_aandeel_ander_overheid</TD><TD>Deze variabele is afgeleid van het veld breuk_verdeling, KI_belastbaar en type_eigenaar. uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Dit is het deel van het onbelastbaar kadastraal inkomen dat voor het betreffende perceel wordt toegekend aan overheidseigenaars. Dit deel wordt bepaald door de breuk_verdeling.</TD></TR>
+<TR><TD>KI_onb_aandeel_privaat_rechtspersoon</TD><TD>Deze variabele is afgeleid van het veld breuk_verdeling, KI_belastbaar en type_eigenaar. uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Dit is het deel van het onbelastbaar kadastraal inkomen dat voor het betreffende perceel wordt toegekend aan eigenaars die onder de categorie private rechtspersonen vallen. Dit deel wordt bepaald door de breuk_verdeling.</TD></TR>
+<TR><TD>aantal_inwonendantwerps_persoon_perceel</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Het telt op perceelsniveau het aantal eigenaars, dat in zijn woning inwoont.</TD></TR>
+<TR><TD>aantal_antwerps_persoon_perceel</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Het telt op perceelsniveau het aantal Antwerpse particuliere eigenaars, dat niet in een woning op het perceeldeel inwoont.</TD></TR>
+<TR><TD>aantal_nietantwerps_persoon_perceel</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Het telt op perceelsniveau het aantal niet Antwerpse particuliere eigenaars, dat niet in een woning op het perceeldeel inwoont.</TD></TR>
+<TR><TD>aantal_sociale_eigendom_perceel</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Het telt op perceelsniveau het aantal eigenaars, die onder de categorie sociale eigenaar (sociale huisvestingsmaatschappij) vallen.</TD></TR>
+<TR><TD>aantal_ander_overheid_perceel</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Het telt op perceelsniveau het aantal eigenaars, die onder de categorie overheidseigenaar vallen.</TD></TR>
+<TR><TD>aantal_privaat_rechtspersoon_perceel</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Het telt op perceelsniveau het aantal eigenaars, die onder de categorie private rechtspersoon vallen.</TD></TR>
+<TR><TD>aantal_eigenaars_perceel</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Het telt op perceelsniveau het aantal eigenaars.</TD></TR>
+"<TR><TD>type_eigenaars_perceel</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg"">de tabel ""Afgeleide velden eigenaar (owner)"</a>. Het is de typologie van de eigenaars op perceelniveau. 0 'inwonend Antwerps persoon'
+<UL><LI>1 Antwerps persoon</LI>
+<LI>2 niet-Antwerps persoon</LI>
+<LI>3 zowel Antwerps als niet-Antwerps persoon</LI>
+<LI>4 sociale eigenaar</LI>
+<LI>5 andere overheid</LI>
+<LI>6 privaat rechtspersoon</LI>
+<LI>7 complexe eigenaarsstructuur</LI></UL></TD></TR>
+</TABLE>
+
+
+<h2><a name="eigwon"></a>Afgeleide velden eigenaars (owner) met betrekking tot aantal woningen op perceeldeelniveau</h2>
+
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Item</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>propertySituationIdf</TD><TD>Deze variabele wordt overgenomen uit en staat beschreven in <a href="#basisparc">de tabel "Basisvelden perceeldelen (parcel)"</a>.</TD></TR>
+<TR><TD>inwonendantwerps_persoon_wng_eig</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Het telt op perceeldeelniveau het aantal eigenaars, dat in zijn woning inwoont.</TD></TR>
+<TR><TD>antwerps_persoon_wng_eig</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Het telt op perceeldeelniveau het aantal Antwerpse particuliere eigenaars, dat niet in een woning op het perceeldeel inwoont.</TD></TR>
+<TR><TD>nietantwerps_persoon_wng_eig</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Het telt op perceeldeelniveau het aantal niet Antwerpse particuliere eigenaars, dat niet in een woning op het perceeldeel inwoont.</TD></TR>
+<TR><TD>sociale_eigendom_wng_eig</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Het telt op perceeldeelniveau het aantal eigenaars, die onder de categorie sociale eigenaar (sociale huisvestingsmaatschappij) vallen.</TD></TR>
+<TR><TD>ander_overheid_wng_eig</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Het telt op perceeldeelniveau het aantal eigenaars, die onder de categorie overheidseigenaar vallen.</TD></TR>
+<TR><TD>privaat_rechtspersoon_wng_eig</TD><TD>Deze variabele is afgeleid van het veld type_eigenaar uit de tabel <a href="#eigafg">de tabel "Afgeleide velden eigenaar (owner)"</a>. Het telt op perceeldeelniveau het aantal eigenaars, die onder de categorie private rechtspersoon vallen.</TD></TR>
+<TR><TD>woningen</TD><TD>Deze variabele wordt overgenomen uit en staat beschreven in <a href="#afgparc"> de tabel "Afgeleide velden perceeldelen"</a>.</TD></TR>
+<TR><TD>woning_eigendom_type</TD><TD>Dit is het belangrijkste type eigenaar op het perceeldeel. Indien er een combinatie is van verschillende type eigenaars op het perceeldeel, dan wordt er gekozen voor een bepaald eigenaarstype op basis van de volgende voorrangregel. Er wordt in de volgende volgorde een eigenaartype toegekend:  
+<UL><LI>voorrang inwonend ></LI> 
+<LI> voorang niet inwonende Antwerpse eigenaar ></LI> 
+<LI>> voorrang niet inwonende niet Antwerpse eigenaar</LI>
+<LI>> voorrang sociale eigenaar</LI>
+<LI>> voorrang overheidseigenaar</LI>
+<LI>> rest: andere rechtspersonen.</LI></UL></TD></TR>"
+<TR><TD>eigenaarswoning</TD><TD>Op basis van de variabelen woningen en woning_eigendom_type wordt nu per eigenaarstype het aantal woningen bepaald. Deze variabele is het aantal woningen met inwonende eigenaar. Omdat het eigenaarschap enkel gekend is op perceelniveau en dus woningen niet exact kunnen toegekend worden aan een eigenaar, wordt het voor dit type eigenaar op één gezet. Er kan per perceeldeel maar maximum één woning bewoond worden door de eigenaar van het perceeldeel.</TD></TR>
+<TR><TD>niet_inwonend_antwerps_wng</TD><TD>Op basis van de variabelen woningen en woning_eigendom_type wordt nu per eigenaarstype het aantal woningen bepaald. Deze variabele is het aantal woningen met een Antwerpse niet inwonende eigenaar. Dit is dus het aantal woningen indien het woning_eigendom_type wijst op een niet inwonende Antwerpse eigenaar. Indien woning_eigendom_type wijst op een inwonende eigenaar en er zijn meerdere woningen, dan krijgt deze variabele de waarde (aantal) woningen - 1, vanuit de veronderstelling dat er maar een woning bewoond kan worden door de inwonende eigenaar.</TD></TR>
+<TR><TD>niet_antwerps_persoon_wng</TD><TD>Op basis van de variabelen woningen en woning_eigendom_type wordt nu per eigenaarstype het aantal woningen bepaald. Deze variabele is het aantal woningen met een niet Antwerpse niet inwonende eigenaar. Dit is dus het aantal woningen indien het woning_eigendom_type wijst op een niet inwonende niet Antwerpse eigenaar. </TD></TR>
+<TR><TD>sociale_eigendom_wng</TD><TD>Op basis van de variabelen woningen en woning_eigendom_type wordt nu per eigenaarstype het aantal woningen bepaald. Deze variabele is het aantal woningen met een sociale eigenaar. Dit is dus het aantal woningen indien het woning_eigendom_type wijst op een sociale eigenaar. </TD></TR>
+<TR><TD>overheidseigendom_wng</TD><TD>Op basis van de variabelen woningen en woning_eigendom_type wordt nu per eigenaarstype het aantal woningen bepaald. Deze variabele is het aantal woningen met een Antwerpse niet inwonende eigenaar. Dit is dus het aantal woningen indien het woning_eigendom_type wijst op een overheidseigenaar. </TD></TR>
+<TR><TD>privaat_rechtspersoon_wng</TD><TD>Op basis van de variabelen woningen en woning_eigendom_type wordt nu per eigenaarstype het aantal woningen bepaald. Deze variabele is het aantal woningen met een eigenaar onder de categorie private rechtspersoon. Dit is dus het aantal woningen indien het woning_eigendom_type wijst op een  eigenaar onder de categorie private rechtspersoon. </TD></TR>
+</TABLE>
+
+
+<h2>Bijlagen</h2>
+<P>&nbsp;</P>
+<h2><a name="aard"></a>Kadastrale aard (nature)</h2>
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Code</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>1</TD><TD>BOUWLAND</TD></TR>
+<TR><TD>2</TD><TD>WEILAND</TD></TR>
+<TR><TD>3</TD><TD>HOOILAND</TD></TR>
+<TR><TD>4</TD><TD>TUIN</TD></TR>
+<TR><TD>5</TD><TD>WARMOESGR.</TD></TR>
+<TR><TD>6</TD><TD>SCH. HOOILAND</TD></TR>
+<TR><TD>7</TD><TD>VETWEIDE</TD></TR>
+<TR><TD>8</TD><TD>SCHAAPSWEI</TD></TR>
+<TR><TD>9</TD><TD>BOS</TD></TR>
+<TR><TD>10</TD><TD>BOOMGAARD HOOG</TD></TR>
+<TR><TD>11</TD><TD>BOOMGAARD LAAG</TD></TR>
+<TR><TD>12</TD><TD>WIJNGAARD</TD></TR>
+<TR><TD>13</TD><TD>BOOMKWEKERIJ</TD></TR>
+<TR><TD>14</TD><TD>KERSTBOMEN</TD></TR>
+<TR><TD>17</TD><TD>PARK</TD></TR>
+<TR><TD>18</TD><TD>SPORTTERREIN</TD></TR>
+<TR><TD>19</TD><TD>RENBAAN</TD></TR>
+<TR><TD>20</TD><TD>SPEELTERREIN</TD></TR>
+<TR><TD>21</TD><TD>KAMPEERTERREIN</TD></TR>
+<TR><TD>22</TD><TD>ZWEMBAD</TD></TR>
+<TR><TD>24</TD><TD>WELWATER</TD></TR>
+<TR><TD>34</TD><TD>PLEIN</TD></TR>
+<TR><TD>35</TD><TD>WOESTE GROND</TD></TR>
+<TR><TD>36</TD><TD>HEIDE</TD></TR>
+<TR><TD>37</TD><TD>ROTS</TD></TR>
+<TR><TD>38</TD><TD>MOERAS</TD></TR>
+<TR><TD>39</TD><TD>VEEN</TD></TR>
+<TR><TD>40</TD><TD>TURFGROND</TD></TR>
+<TR><TD>41</TD><TD>AANSPOELING</TD></TR>
+<TR><TD>42</TD><TD>DUIN</TD></TR>
+<TR><TD>43</TD><TD>WAL</TD></TR>
+<TR><TD>44</TD><TD>DIJK</TD></TR>
+<TR><TD>45</TD><TD>STEENBERG WGR.</TD></TR>
+<TR><TD>46</TD><TD>STORT.WGR.</TD></TR>
+<TR><TD>49</TD><TD>STORT.EXP.</TD></TR>
+<TR><TD>50</TD><TD>NIJV.GROND</TD></TR>
+<TR><TD>51</TD><TD>WERF</TD></TR>
+<TR><TD>52</TD><TD>KAAI</TD></TR>
+<TR><TD>53</TD><TD>DOK</TD></TR>
+<TR><TD>54</TD><TD>BASSIN NIJV.</TD></TR>
+<TR><TD>55</TD><TD>SPOORWEG</TD></TR>
+<TR><TD>56</TD><TD>STEENBERG EXP.</TD></TR>
+<TR><TD>57</TD><TD>GROEVE</TD></TR>
+<TR><TD>58</TD><TD>MIJN</TD></TR>
+<TR><TD>59</TD><TD>KANAAL</TD></TR>
+<TR><TD>62</TD><TD>GRAFHEUVEL</TD></TR>
+<TR><TD>25</TD><TD>POEL</TD></TR>
+<TR><TD>26</TD><TD>VIJVER</TD></TR>
+<TR><TD>27</TD><TD>MEER</TD></TR>
+<TR><TD>28</TD><TD>GRACHT</TD></TR>
+<TR><TD>29</TD><TD>SLOOT</TD></TR>
+<TR><TD>30</TD><TD>VISKWEKERIJ</TD></TR>
+<TR><TD>33</TD><TD>WEG</TD></TR>
+<TR><TD>63</TD><TD>MERKSTEEN</TD></TR>
+<TR><TD>64</TD><TD>OPP.& G.D.</TD></TR>
+<TR><TD>66</TD><TD>BEB.OPP.A</TD></TR>
+<TR><TD>67</TD><TD>BEB.OPP.GEWOON</TD></TR>
+<TR><TD>68</TD><TD>BEB.OPP.UITZ.</TD></TR>
+<TR><TD>69</TD><TD>BEB.OPP.NIJVER.</TD></TR>
+<TR><TD>70</TD><TD>GROND</TD></TR>
+<TR><TD>71</TD><TD>PARKING</TD></TR>
+<TR><TD>72</TD><TD>VLIEGVELD</TD></TR>
+<TR><TD>73</TD><TD>MILIT.TERREIN</TD></TR>
+<TR><TD>74</TD><TD>KERKHOF</TD></TR>
+<TR><TD>75</TD><TD>WIJMLAND</TD></TR>
+<TR><TD>76</TD><TD>BASSIN GEWOON</TD></TR>
+<TR><TD>77</TD><TD>KOER</TD></TR>
+<TR><TD>78</TD><TD>BOUWGROND</TD></TR>
+<TR><TD>79</TD><TD>D.PARKING#</TD></TR>
+<TR><TD>80</TD><TD>MAT.& OUT. ONG.</TD></TR>
+<TR><TD>85</TD><TD>KLAARPAN</TD></TR>
+<TR><TD>86</TD><TD>ROOTPUT</TD></TR>
+<TR><TD>87</TD><TD>BASSIN M&O</TD></TR>
+<TR><TD>164</TD><TD>ALG.GEM.DELEN GEB</TD></TR>
+<TR><TD>165</TD><TD>SPEC.GEM.DELEN GEB</TD></TR>
+<TR><TD>166</TD><TD>BEB.OPP.APP.</TD></TR>
+<TR><TD>170</TD><TD>ANDERE ONGEBWD</TD></TR>
+<TR><TD>200</TD><TD>HUIS</TD></TR>
+<TR><TD>201</TD><TD>NOODWONING</TD></TR>
+<TR><TD>202</TD><TD>KROTWONING</TD></TR>
+<TR><TD>203</TD><TD>BERGPLAATS</TD></TR>
+<TR><TD>204</TD><TD>GARAGE</TD></TR>
+<TR><TD>205</TD><TD>AFDAK</TD></TR>
+<TR><TD>223</TD><TD>HUIS#</TD></TR>
+<TR><TD>240</TD><TD>HOEVE</TD></TR>
+<TR><TD>241</TD><TD>PAARDESTAL</TD></TR>
+<TR><TD>242</TD><TD>DUIVENTIL</TD></TR>
+<TR><TD>243</TD><TD>KL.VEETEELT</TD></TR>
+<TR><TD>244</TD><TD>GR.VEETEELT</TD></TR>
+<TR><TD>245</TD><TD>SERRE</TD></TR>
+<TR><TD>246</TD><TD>PADDEST.KWEK.</TD></TR>
+<TR><TD>247</TD><TD>LANDGEBOUW</TD></TR>
+<TR><TD>260</TD><TD>DRUKKERIJ</TD></TR>
+<TR><TD>261</TD><TD>GARAGEWERKPL.</TD></TR>
+<TR><TD>262</TD><TD>SMIDSE</TD></TR>
+<TR><TD>263</TD><TD>SCHRIJNWERKERIJ</TD></TR>
+<TR><TD>264</TD><TD>WASSERIJ</TD></TR>
+<TR><TD>265</TD><TD>WERKPLAATS</TD></TR>
+<TR><TD>280</TD><TD>ZUIVELFABRIEK</TD></TR>
+<TR><TD>281</TD><TD>BAKKERIJ</TD></TR>
+<TR><TD>282</TD><TD>VLEESW.FABRIEK</TD></TR>
+<TR><TD>283</TD><TD>SLACHTERIJ</TD></TR>
+<TR><TD>284</TD><TD>VEEVOE.FABRIEK</TD></TR>
+<TR><TD>285</TD><TD>KOFFIEFABRIEK</TD></TR>
+<TR><TD>286</TD><TD>BROUWERIJ</TD></TR>
+<TR><TD>287</TD><TD>DRANKFABRIEK</TD></TR>
+<TR><TD>288</TD><TD>TABAKFABRIEK</TD></TR>
+<TR><TD>289</TD><TD>MAALDERIJ</TD></TR>
+<TR><TD>206</TD><TD>LAVATORY</TD></TR>
+<TR><TD>220</TD><TD>PRIVATIEF DEEL#</TD></TR>
+<TR><TD>221</TD><TD>PRIVAT. DELEN</TD></TR>
+<TR><TD>222</TD><TD>BUILDING</TD></TR>
+<TR><TD>303</TD><TD>MEUBELFABRIEK</TD></TR>
+<TR><TD>304</TD><TD>SPEELG.FABRIEK</TD></TR>
+<TR><TD>305</TD><TD>PAPIERFABRIEK</TD></TR>
+<TR><TD>306</TD><TD>GEBRUIKSART.FAB.</TD></TR>
+<TR><TD>320</TD><TD>STEENBAKKERIJ</TD></TR>
+<TR><TD>321</TD><TD>CEMENTFABRIEK</TD></TR>
+<TR><TD>322</TD><TD>ZAGERIJ</TD></TR>
+<TR><TD>323</TD><TD>VERFFABRIEK</TD></TR>
+<TR><TD>324</TD><TD>BOUWMAT.FABRIEK</TD></TR>
+<TR><TD>340</TD><TD>METAALNIJV.</TD></TR>
+<TR><TD>341</TD><TD>HOOGOVEN</TD></TR>
+<TR><TD>342</TD><TD>KALKOVEN</TD></TR>
+<TR><TD>343</TD><TD>CONSTR.WERKPL.</TD></TR>
+<TR><TD>344</TD><TD>ELEK.MAT.FAB.</TD></TR>
+<TR><TD>345</TD><TD>PETROL.RAFF.</TD></TR>
+<TR><TD>346</TD><TD>CHEMISCH.FABRIEK</TD></TR>
+<TR><TD>347</TD><TD>RUBBERFABRIEK</TD></TR>
+<TR><TD>348</TD><TD>IJSFABRIEK</TD></TR>
+<TR><TD>349</TD><TD>GLASFABRIEK</TD></TR>
+<TR><TD>350</TD><TD>PLAST.FABRIEK</TD></TR>
+<TR><TD>351</TD><TD>AARDEW.FABRIEK</TD></TR>
+<TR><TD>352</TD><TD>KOLENMIJN</TD></TR>
+<TR><TD>353</TD><TD>ELEKTR.CENTRALE</TD></TR>
+<TR><TD>354</TD><TD>GASFABRIEK</TD></TR>
+<TR><TD>355</TD><TD>GAZOMETER</TD></TR>
+<TR><TD>290</TD><TD>VOEDINGSFABRIEK</TD></TR>
+<TR><TD>300</TD><TD>KLEDINGFABRIEK</TD></TR>
+<TR><TD>301</TD><TD>TEXTIELFABRIEK</TD></TR>
+<TR><TD>302</TD><TD>LEDERWAR.FAB.</TD></TR>
+<TR><TD>372</TD><TD>ELEKTR.CABINE</TD></TR>
+<TR><TD>373</TD><TD>PYLOON</TD></TR>
+<TR><TD>374</TD><TD>GASCABINE</TD></TR>
+<TR><TD>375</TD><TD>CABINE</TD></TR>
+<TR><TD>376</TD><TD>RESERVOIR</TD></TR>
+<TR><TD>377</TD><TD>SILO</TD></TR>
+<TR><TD>378</TD><TD>ONDERZOEKSCENT.</TD></TR>
+<TR><TD>379</TD><TD>DROOGINSTALL.</TD></TR>
+<TR><TD>380</TD><TD>KOELINRICHTING</TD></TR>
+<TR><TD>381</TD><TD>MAT.& OUT. GEB.</TD></TR>
+<TR><TD>382</TD><TD>BEDRIJFSCOMPL#</TD></TR>
+<TR><TD>400</TD><TD>BANK</TD></TR>
+<TR><TD>401</TD><TD>BEURS</TD></TR>
+<TR><TD>402</TD><TD>KANTOORGEBOUW</TD></TR>
+<TR><TD>403</TD><TD>DRANKHUIS</TD></TR>
+<TR><TD>404</TD><TD>HOTEL</TD></TR>
+<TR><TD>405</TD><TD>RESTAURANT</TD></TR>
+<TR><TD>406</TD><TD>FEESTZAAL</TD></TR>
+<TR><TD>407</TD><TD>HANDELSHUIS</TD></TR>
+<TR><TD>408</TD><TD>GROOTWARENHUIS</TD></TR>
+<TR><TD>409</TD><TD>GARAGESTELPL.</TD></TR>
+<TR><TD>410</TD><TD>PARKEERGEBOUW</TD></TR>
+<TR><TD>411</TD><TD>SERVICESTATION</TD></TR>
+<TR><TD>412</TD><TD>OVERDEKTE MARKT</TD></TR>
+<TR><TD>413</TD><TD>TOONZAAL</TD></TR>
+<TR><TD>356</TD><TD>COKESFABRIEK</TD></TR>
+<TR><TD>357</TD><TD>NIJV.GEBOUW</TD></TR>
+<TR><TD>370</TD><TD>HANGAR</TD></TR>
+<TR><TD>371</TD><TD>MAGAZIJN</TD></TR>
+<TR><TD>422</TD><TD>KONINKL.PALEIS</TD></TR>
+<TR><TD>423</TD><TD>GERECHTSHOF</TD></TR>
+<TR><TD>424</TD><TD>STRAFINRICHTING</TD></TR>
+<TR><TD>425</TD><TD>GEZANTSCH.GEB.</TD></TR>
+<TR><TD>426</TD><TD>POLITIEGEBOUW</TD></TR>
+<TR><TD>427</TD><TD>MILIT.GEBOUW</TD></TR>
+<TR><TD>428</TD><TD>STATION</TD></TR>
+<TR><TD>429</TD><TD>WACHTHUIS</TD></TR>
+<TR><TD>430</TD><TD>TELEFOONCEL</TD></TR>
+<TR><TD>431</TD><TD>TELECOM.GEBOUW</TD></TR>
+<TR><TD>432</TD><TD>LUCHTHAVEN</TD></TR>
+<TR><TD>433</TD><TD>LIJKENHUIS</TD></TR>
+<TR><TD>434</TD><TD>ADMIN.GEBOUW</TD></TR>
+<TR><TD>440</TD><TD>WEESHUIS</TD></TR>
+<TR><TD>441</TD><TD>KINDERBEWARING</TD></TR>
+<TR><TD>442</TD><TD>BESCHER.WERKPL.</TD></TR>
+<TR><TD>443</TD><TD>RUSTHUIS</TD></TR>
+<TR><TD>444</TD><TD>VERPLEEGINR.</TD></TR>
+<TR><TD>445</TD><TD>KUURINRICHTING</TD></TR>
+<TR><TD>446</TD><TD>WELZIJNSGEBOUW</TD></TR>
+<TR><TD>460</TD><TD>SCHOOLGEBOUW</TD></TR>
+<TR><TD>461</TD><TD>UNIVERSITEIT</TD></TR>
+<TR><TD>462</TD><TD>MUSEUM</TD></TR>
+<TR><TD>463</TD><TD>BIBLIOTHEEK</TD></TR>
+<TR><TD>480</TD><TD>KERK</TD></TR>
+<TR><TD>414</TD><TD>KIOSK</TD></TR>
+<TR><TD>415</TD><TD>DIERENGEBOUW</TD></TR>
+<TR><TD>420</TD><TD>GEMEENTEHUIS</TD></TR>
+<TR><TD>421</TD><TD>GOUVER.GEBOUW</TD></TR>
+<TR><TD>486</TD><TD>SYNAGOGE</TD></TR>
+<TR><TD>487</TD><TD>MOSKEE</TD></TR>
+<TR><TD>488</TD><TD>TEMPEL</TD></TR>
+<TR><TD>489</TD><TD>GEBOUW ERED.</TD></TR>
+<TR><TD>500</TD><TD>BADINRICHTING</TD></TR>
+<TR><TD>501</TD><TD>SPORTGEBOUW</TD></TR>
+<TR><TD>502</TD><TD>VAKAN.TEHUIS</TD></TR>
+<TR><TD>503</TD><TD>VAKANTIE VERBL.</TD></TR>
+<TR><TD>504</TD><TD>JEUGDHEEM</TD></TR>
+<TR><TD>505</TD><TD>THEATER</TD></TR>
+<TR><TD>506</TD><TD>SPEKTAKELZAAL</TD></TR>
+<TR><TD>507</TD><TD>CULTUR.CENTRUM</TD></TR>
+<TR><TD>508</TD><TD>BIOSCOOP</TD></TR>
+<TR><TD>509</TD><TD>CASINO</TD></TR>
+<TR><TD>510</TD><TD>UITKIJK</TD></TR>
+<TR><TD>520</TD><TD>PUIN</TD></TR>
+<TR><TD>521</TD><TD>ONDERGR.RUIMTE</TD></TR>
+<TR><TD>522</TD><TD>PAVILJOEN</TD></TR>
+<TR><TD>523</TD><TD>KASTEEL</TD></TR>
+<TR><TD>524</TD><TD>HISTOR. GEBOUW</TD></TR>
+<TR><TD>525</TD><TD>MONUMENT</TD></TR>
+<TR><TD>526</TD><TD>WINDMOLEN</TD></TR>
+<TR><TD>527</TD><TD>WATERMOLEN</TD></TR>
+<TR><TD>528</TD><TD>WATERTOREN</TD></TR>
+<TR><TD>529</TD><TD>WATERWINNING</TD></TR>
+<TR><TD>481</TD><TD>KAPEL</TD></TR>
+<TR><TD>482</TD><TD>KLOOSTER</TD></TR>
+<TR><TD>483</TD><TD>PASTORIE</TD></TR>
+<TR><TD>484</TD><TD>SEMINARIE</TD></TR>
+<TR><TD>485</TD><TD>BISDOM</TD></TR>
+<TR><TD>530</TD><TD>ZUIVERINGSINST.</TD></TR>
+<TR><TD>531</TD><TD>AFVALVERWERKING</TD></TR>
+<TR><TD>532</TD><TD>KELDER #</TD></TR>
+<TR><TD>533</TD><TD>KAMER #</TD></TR>
+<TR><TD>534</TD><TD>STUDIO #</TD></TR>
+<TR><TD>535</TD><TD>HANDELSPAND #</TD></TR>
+<TR><TD>536</TD><TD>KANTOOR #</TD></TR>
+<TR><TD>537</TD><TD>APPARTEMENT #</TD></TR>
+<TR><TD>538</TD><TD>ALG.GEM.DELEN ONG</TD></TR>
+<TR><TD>539</TD><TD>ANDERE GEBOUWD</TD></TR>
+<TR><TD>540</TD><TD>ANDERE ONGEBWD</TD></TR>
+<TR><TD>541</TD><TD>OPSTAL/ERFPACHT</TD></TR>
+<TR><TD>542</TD><TD>UITBATINGSEENH. #</TD></TR>
+<TR><TD>543</TD><TD>GARAGEBOX #</TD></TR>
+<TR><TD>544</TD><TD>OVERD.PARKING #</TD></TR>
+<TR><TD>545</TD><TD>NT.OVERD.PARK. #</TD></TR>
+<TR><TD>546</TD><TD>RESERVE #</TD></TR>
+<TR><TD>547</TD><TD>ETALAGE #</TD></TR>
+<TR><TD>548</TD><TD>WEG</TD></TR>
+<TR><TD>549</TD><TD>DIV.PRIV.DEEL #</TD></TR>
+<TR><TD>550</TD><TD>CABINE #</TD></TR>
+<TR><TD>551</TD><TD>SPEC.GEM.DELEN ONG</TD></TR>
+</Table>
+
+<h2><a name="privaat"></a>Beschrijving onderdelen privatief deel (Descriptprivate)</h2>
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Code onderdeel</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>A</TD><TD>geheel, voornamelijk dienstig voor bewoning (appartementen, flat,studio, enz.)</TD></TR>
+<TR><TD>B</TD><TD>bergplaats</TD></TR>
+<TR><TD>BU</TD><TD>geheel, voornamelijk bestemd voor bureaus</TD></TR>
+<TR><TD>G</TD><TD>garage</TD></TR>
+<TR><TD>HA</TD><TD>geheel, voornamelijk bestemd voor handelsdoeleinden</TD></TR>
+<TR><TD>K</TD><TD>kelder (provisiekelder, kolenkelder, enz.) of voorraadkamer en om het even welk ander lokaal dat ondergronds is gelegen en als bergplaats wordt aangewend</TD></TR>
+<TR><TD>KA</TD><TD> afzonderlijke kamer</TD></TR>
+<TR><TD>M</TD><TD>zolderkamer (mansarde) en elk gelijkaardig lokaal op de bovenste verdieping, wat ook de bestemming ervan weze</TD></TR>
+<TR><TD>P</TD><TD>parking</TD></TR>
+<TR><TD>S</TD><TD>standplaats</TD></TR>
+<TR><TD>T</TD><TD>tuin</TD></TR>
+<TR><TD>VITR</TD><TD>uitstalraam (vitrine)</TD></TR>
+<TR><TD>OG2</TD><TD>ondergrondse verdieping, 2e niveau</TD></TR>
+<TR><TD>OG1</TD><TD>ondergrondse verdieping, 1e niveau</TD></TR>
+<TR><TD>OG</TD><TD>ondergrondse verdieping (indien er maar één bestaat)</TD></TR>
+<TR><TD>GV</TD><TD>gelijkvloerse verdieping</TD></TR>
+<TR><TD>TV</TD><TD>tussenverdieping</TD></TR>
+<TR><TD>BE</TD><TD>bel-etage</TD></TR>
+<TR><TD>1</TD><TD>1e verdieping</TD></TR>
+<TR><TD>2</TD><TD>2e verdieping</TD></TR>
+<TR><TD>3</TD><TD>3e verdieping</TD></TR>
+<TR><TD>/L/</TD><TD> linkerkant</TD></TR>
+<TR><TD>/R/</TD><TD>rechterkant</TD></TR>
+<TR><TD>/C/</TD><TD>centrum</TD></TR>
+<TR><TD>/CL/</TD><TD>centrum links</TD></TR>
+<TR><TD>/CR/</TD><TD>centrum rechts</TD></TR>
+<TR><TD>/VK/</TD><TD>voorkant</TD></TR>
+<TR><TD>/AK/</TD><TD>achterkant</TD></TR>
+<TR><TD>/VK.L/</TD><TD> voorkant links</TD></TR>
+<TR><TD>/VK.R/</TD><TD>voorkant rechts</TD></TR>
+<TR><TD>/AK.R/</TD><TD>achterkant rechts</TD></TR>
+<TR><TD>/AK.L/</TD><TD>achterkant links</TD></TR>
+</TABLE>
+
+<h2><a name="constrind"></a>Beschrijving constructie-indicatie (Constructionindication)</h2>
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Code onderdeel</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>10</TD><TD>Huis in een tuinwijk</TD></TR>
+<TR><TD>100</TD><TD>Toebehorend aan één enkele eigenaar - Zonder lift</TD></TR>
+<TR><TD>101</TD><TD>Wooneenheid - Zonder lift</TD></TR>
+<TR><TD>102</TD><TD>Exploitatie-eenheid - Zonder lift</TD></TR>
+<TR><TD>103</TD><TD>Garage, standplaats, parking, afzonderlijk gekadastreerd - Zonder lift</TD></TR>
+<TR><TD>104</TD><TD>Diverse lokalen, afzonderlijk gekadastreerd - Zonder lift</TD></TR>
+<TR><TD>105</TD><TD>Huis#</TD></TR>
+<TR><TD>110</TD><TD>Toebehorend aan één enkele eigenaar - Met lift</TD></TR>
+<TR><TD>111</TD><TD>Wooneenheid - Met lift</TD></TR>
+<TR><TD>112</TD><TD>Exploitatie-eenheid - Met lift</TD></TR>
+<TR><TD>113</TD><TD>Garage, standplaats, parking, afzonderlijk gekadastreerd - Met lift</TD></TR>
+<TR><TD>114</TD><TD>Diverse lokalen, afzonderlijk gekadastreerd - Met lift</TD></TR>
+<TR><TD>20</TD><TD>Gekarakteriseerde hoeve</TD></TR>
+<TR><TD>200</TD><TD>Handelshuis - Zonder particuliere ingang</TD></TR>
+<TR><TD>210</TD><TD>Handelshuis - Met particuliere ingang</TD></TR>
+<TR><TD>220</TD><TD>Handelshuis - Met koetspoort alleen</TD></TR>
+<TR><TD>230</TD><TD>Handelshuis - Met koetspoort en particuliere ingang</TD></TR>
+<TR><TD>30</TD><TD>Villa</TD></TR>
+<TR><TD>300</TD><TD>Nijverheidsgebouw</TD></TR>
+<TR><TD>305</TD><TD>Deel van een nijverheidsgebouw</TD></TR>
+<TR><TD>31</TD><TD>Bungalow</TD></TR>
+<TR><TD>32</TD><TD>Fermette</TD></TR>
+<TR><TD>33</TD><TD>Vakantieverblijf</TD></TR>
+<TR><TD>40</TD><TD>Huis zonder bewoonbare kelder</TD></TR>
+<TR><TD>400</TD><TD>Kantoorgebouwen</TD></TR>
+<TR><TD>41</TD><TD>Huis bel-étage</TD></TR>
+<TR><TD>410</TD><TD>Gebouw bestemd voor handelsdoeleinden</TD></TR>
+<TR><TD>420</TD><TD>Bedrijf uit de HORECA sector</TD></TR>
+<TR><TD>430</TD><TD>Gebouw bestemd voor culturele,recreatieve of sportieve activiteiten</TD></TR>
+<TR><TD>440</TD><TD>Gebouw bestemd voor hospitalisatie of sociale hulpverlening</TD></TR>
+<TR><TD>450</TD><TD>Gebouw bestemd voor het onderwijs</TD></TR>
+<TR><TD>460</TD><TD>Gebouw bestemd voor de uitoefening van erediensten, enz.</TD></TR>
+<TR><TD>470</TD><TD>Kasteel</TD></TR>
+<TR><TD>480</TD><TD>Openbaar gebouw of gebouw voor openbaar nut</TD></TR>
+<TR><TD>50</TD><TD>Huis met bewoonbare kelder</TD></TR>
+<TR><TD>500</TD><TD>Aanhorigheid van een woning</TD></TR>
+<TR><TD>510</TD><TD>Ambachtelijke- of industriële aanhorigheid</TD></TR>
+<TR><TD>520</TD><TD>Aanhorigheid met handelsdoeleinden</TD></TR>
+<TR><TD>530</TD><TD>Landbouwaanhorigheid</TD></TR>
+<TR><TD>531</TD><TD>Serre behorende bij een landbouw-, tuinbouw- of wijngaarduitbating</TD></TR>
+<TR><TD>532</TD><TD>Serre niet behorende bij een landbouw-, tuinbouw- of wijngaarduitbating</TD></TR>
+<TR><TD>540</TD><TD>Gebouwen met bijzonder karakter</TD></TR>
+<TR><TD>60</TD><TD>Huis met koetspoort als enige ingang</TD></TR>
+<TR><TD>70</TD><TD>Huis met koetspoort en particuliere ingang</TD></TR>
+<TR><TD>80</TD><TD>Huis zonder woonplaatsen op het gelijkvloers</TD></TR>
+<TR><TD>999</TD><TD># DEEL</TD></TR>
+<TR><TD>ZZZ</TD><TD>andere</TD></TR>
+</TABLE>
+
+<h2><a name="classeenv"></a>Beschrijving eenvoudige classificatiecode (classificatiecode_eenvoudig)</h2>
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Code onderdeel</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>1</TD><TD>huizen</TD></TR>
+<TR><TD>2</TD><TD>appartementen</TD></TR>
+<TR><TD>3</TD><TD>aanhorigheden appartementen</TD></TR>
+<TR><TD>4</TD><TD>handelseenheden</TD></TR>
+<TR><TD>5</TD><TD>handelshuizen</TD></TR>
+<TR><TD>6</TD><TD>industrieel pand</TD></TR>
+<TR><TD>7</TD><TD>kantoor</TD></TR>
+<TR><TD>8</TD><TD>horeca</TD></TR>
+<TR><TD>9</TD><TD>cultuur en sport</TD></TR>
+<TR><TD>10</TD><TD>gezondheid en sociaal</TD></TR>
+<TR><TD>11</TD><TD>onderwijs</TD></TR>
+<TR><TD>12</TD><TD>religie</TD></TR>
+<TR><TD>13</TD><TD>overheid</TD></TR>
+<TR><TD>14</TD><TD>andere aanhorigheid</TD></TR>
+<TR><TD>15</TD><TD>anders/onbekend</TD></TR>
+<TR><TD>16</TD><TD>geen classificatiecode.</TD></TR>
+</TABLE>
+
+<h2><a name="percgebr"></a>Beschrijving eenvoudige classificatiecode (perceel_gebruik)</h2>
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Code onderdeel</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>1</TD><TD>huis</TD></TR>
+<TR><TD>2</TD><TD>woonappartement</TD></TR>
+<TR><TD>3</TD><TD>handelsappartement</TD></TR>
+<TR><TD>4</TD><TD>woonhandelappartement</TD></TR>
+<TR><TD>5</TD><TD>handelshuis</TD></TR>
+<TR><TD>6</TD><TD>industrieel pand</TD></TR>
+<TR><TD>7</TD><TD>kantoor</TD></TR>
+<TR><TD>8</TD><TD>horeca</TD></TR>
+<TR><TD>9</TD><TD>cultuur sport</TD></TR>
+<TR><TD>10</TD><TD>gezondheid sociaal</TD></TR>
+<TR><TD>11</TD><TD>onderwijs</TD></TR>
+<TR><TD>12</TD><TD>religie</TD></TR>
+<TR><TD>13</TD><TD>overheid</TD></TR>
+<TR><TD>14</TD><TD>onbekend.</TD></TR>
+</TABLE>
+
+<h2><a name="aard"></a>Beschrijving Aard</h2>
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Code onderdeel</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>1</TD><TD>wooneenheid</TD></TR>
+<TR><TD>2</TD><TD>bergplaats</TD></TR>
+<TR><TD>3</TD><TD>bureaus</TD></TR>
+<TR><TD>4</TD><TD>garage</TD></TR>
+<TR><TD>5</TD><TD>handel</TD></TR>
+<TR><TD>6</TD><TD>kelder</TD></TR>
+<TR><TD>7</TD><TD>kamer</TD></TR>
+<TR><TD>8</TD><TD>zolderkamer</TD></TR>
+<TR><TD>9</TD><TD>parking</TD></TR>
+<TR><TD>10</TD><TD>standplaats</TD></TR>
+<TR><TD>11</TD><TD>tuin</TD></TR>
+<TR><TD>12</TD><TD>vitrine</TD></TR>
+</TABLE>
+
+<h2><a name="hoofdgroep"></a>Beschrijving NIS hoofdgroep</h2>
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Code onderdeel</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>1</TD><TD>Appartementen en buildings</TD></TR>
+<TR><TD>2</TD><TD>Huizen en hoeven en bijgebouwen</TD></TR>
+<TR><TD>3</TD><TD>Industriele gebouwen</TD></TR>
+<TR><TD>4</TD><TD>Opslaggebouwen</TD></TR>
+<TR><TD>5</TD><TD>Kantoorgebouwen</TD></TR>
+<TR><TD>6</TD><TD>Commerciele gebouwen</TD></TR>
+<TR><TD>7</TD><TD>Andere</TD></TR>
+<TR><TD>8</TD><TD>Onbebouwde percelen</TD></TR>
+<TR><TD>9</TD><TD>Andere</TD></TR>
+</TABLE>
+
+<h2><a name="nisrubriek"></a>Beschrijving NIS rubriek</h2>
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Code onderdeel</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>1</TD><TD>Afzonderlijke appartementen (met KI, zonder oppervlakte)</TD></TR>
+<TR><TD>2</TD><TD>Allerlei handelsinrichtingen</TD></TR>
+<TR><TD>3</TD><TD>Ambachts- en industriegebouwen</TD></TR>
+<TR><TD>4</TD><TD>Andere</TD></TR>
+<TR><TD>5</TD><TD>Banken, kantoren</TD></TR>
+<TR><TD>6</TD><TD>Bijgebouwen</TD></TR>
+<TR><TD>7</TD><TD>Boomgaard</TD></TR>
+<TR><TD>8</TD><TD>Bos</TD></TR>
+<TR><TD>9</TD><TD>Bouwland</TD></TR>
+<TR><TD>10</TD><TD>Bouwpercelen</TD></TR>
+<TR><TD>11</TD><TD>Building</TD></TR>
+<TR><TD>12</TD><TD>Eredienst</TD></TR>
+<TR><TD>13</TD><TD>Fictieve percelen appartementsgebouw (zonder KI, met oppervlakte)</TD></TR>
+<TR><TD>14</TD><TD>Gekadastreerde wateren</TD></TR>
+<TR><TD>15</TD><TD>Gekadastreerde wegen</TD></TR>
+<TR><TD>16</TD><TD>Hooiland</TD></TR>
+<TR><TD>17</TD><TD>Horeca</TD></TR>
+<TR><TD>18</TD><TD>Huis, hoeve</TD></TR>
+<TR><TD>19</TD><TD>Landelijke bijgebouwen</TD></TR>
+<TR><TD>20</TD><TD>Monumenten</TD></TR>
+<TR><TD>21</TD><TD>Nijverheidsgronden</TD></TR>
+<TR><TD>22</TD><TD>Nutsvoorzieningen</TD></TR>
+<TR><TD>23</TD><TD>Onderwijs, onderzoek en cultuur</TD></TR>
+<TR><TD>24</TD><TD>Openbare gebouwen</TD></TR>
+<TR><TD>25</TD><TD>Opslagruimte</TD></TR>
+<TR><TD>26</TD><TD>Park</TD></TR>
+<TR><TD>27</TD><TD>Puin</TD></TR>
+<TR><TD>28</TD><TD>Recreatie, sport</TD></TR>
+<TR><TD>29</TD><TD>Serre</TD></TR>
+<TR><TD>30</TD><TD>Sociale Zorg en ziekenzorg</TD></TR>
+<TR><TD>31</TD><TD>Splitsing voor grond en gebouw</TD></TR>
+<TR><TD>32</TD><TD>Tuin</TD></TR>
+<TR><TD>33</TD><TD>Tuinbouwgronden</TD></TR>
+<TR><TD>34</TD><TD>Weiland</TD></TR>
+<TR><TD>35</TD><TD>Woeste gronden</TD></TR>
+<TR><TD>36</TD><TD>niet toegewezen.</TD></TR>
+</TABLE>
+
+<h2><a name="eigtype"></a>Beschrijving type eigenaar (partyType)</h2>
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Code onderdeel</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>1</TD><TD>In gemeenschap</TD></TR>
+<TR><TD>2</TD><TD>Tijdelijke vereniging</TD></TR>
+<TR><TD>3</TD><TD>Feitelijke vereniging</TD></TR>
+<TR><TD>4</TD><TD>Natuurlijk persoon</TD></TR>
+<TR><TD>5</TD><TD>Rechtspersoon</TD></TR>
+<TR><TD>6</TD><TD>Andere</TD></TR>
+<TR><TD>7</TD><TD>Erfloos</TD></TR>
+<TR><TD>8</TD><TD>Onbeheerde nalatenschap</TD></TR>
+<TR><TD>9</TD><TD>Belgische staat</TD></TR>
+<TR><TD>13</TD><TD>gedeeltelijk van de gemeenschap en gedeeltelijk van de vrouw</TD></TR>
+<TR><TD>15</TD><TD>gedeeltelijk van de gemeenschap en gedeeltelijk van de man</TD></TR>
+<TR><TD>16</TD><TD>gedeeltelijk van de vrouw en gedeeltelijk van de man</TD></TR>
+<TR><TD>17</TD><TD>gedeeltelijk van de gemeenschap, gedeeltelijk van de vrouw en gedeeltelijk van de man</TD></TR>
+<TR><TD>18</TD><TD>ontbrekende informatie</TD></TR>
+<TR><TD>19</TD><TD>Algemene vereniging</TD></TR>
+</TABLE>
+
+<h2><a name="zakrecht"></a>Beschrijving categorieën zakelijk recht</h2>
+<TABLE BORDER=”1” CELLSPACING="0">
+<TR BGCOLOR="#FFA500"> <TH WIDTH="200"> <FONT COLOR="FFFFFF">Code onderdeel</FONT></TH> <TH WIDTH="1000"> <FONT COLOR="FFFFFF">Beschrijving </FONT></TH> </TR>
+<TR><TD>VE</TD><TD>Volle eigendom</TD></TR>
+<TR><TD>VE-BEZ-BEWONING</TD><TD>Volle eigendom bezwaard met een recht van bewoning</TD></TR>
+<TR><TD>VE-BEZ-ERFP</TD><TD>Volle eigendom bezwaard met een recht van erfpacht</TD></TR>
+<TR><TD>VE-BEZ-GEBR/BEWON</TD><TD>Volle eigendom bezwaard met een recht van gebruik en bewoning</TD></TR>
+<TR><TD>VE-BEZ-GEBRUIK</TD><TD>Volle eigendom bezwaard met een recht van gebruik</TD></TR>
+<TR><TD>VE-BEZ-OPSTAL</TD><TD>Volle eigendom bezwaard met een recht van opstal</TD></TR>
+<TR><TD>VG</TD><TD>Vruchtgebruik</TD></TR>
+<TR><TD>VG-BEZ-BEWONING</TD><TD>Vruchtgebruik bezwaard met een recht van bewoning</TD></TR>
+<TR><TD>VG-BEZ-ERFP</TD><TD>Vruchtgebruik bezwaard met een recht van erfpacht</TD></TR>
+<TR><TD>VG-BEZ-GEBR/BEWON</TD><TD>Vruchtgebruik bezwaard met een recht van gebruik en bewoning</TD></TR>
+<TR><TD>VG-BEZ-GEBRUIK</TD><TD>Vruchtgebruik bezwaard met een recht van gebruik</TD></TR>
+<TR><TD>VG-BEZ-OPSTAL</TD><TD>Vruchtgebruik bezwaard met een recht van opstal</TD></TR>
+<TR><TD>ERFP</TD><TD>Erfpacht</TD></TR>
+<TR><TD>OPSTAL</TD><TD>Opstal</TD></TR>
+<TR><TD>OPSTAL-BEZ-ERFP</TD><TD>Opstal bezwaard met een recht van erfpacht</TD></TR>
+<TR><TD>GEBR-BEWON</TD><TD>Gebruik en bewoning</TD></TR>
+<TR><TD>BEWONING</TD><TD>Bewoning</TD></TR>
+<TR><TD>GEBRUIK</TD><TD>Gebruik</TD></TR>
+<TR><TD>GEBOUW</TD><TD>Gebouw</TD></TR>
+<TR><TD>BE</TD><TD>Blote eigendom</TD></TR>
+<TR><TD>GROND</TD><TD>Eigenaar grond</TD></TR>
+<TR><TD>BE-BEZ-BEWONING</TD><TD>Blote eigendom bezwaard met een recht van bewoning</TD></TR>
+<TR><TD>BE-BEZ-ERFP</TD><TD>Blote eigendom bezwaard met een recht van erfpacht</TD></TR>
+<TR><TD>BE-BEZ-GEBR/BEWON</TD><TD>Blote eigendom bezwaard met een recht van gebruik en bewoning</TD></TR>
+<TR><TD>BE-BEZ-GEBRUIK</TD><TD>Blote eigendom bezwaard met een recht van gebruik</TD></TR>
+<TR><TD>BE-BEZ-OPSTAL</TD><TD>Blote eigendom bezwaard met een recht van opstal</TD></TR>
+<TR><TD>EVG</TD><TD>Eventueel vruchtgebruik</TD></TR>
+<TR><TD>ONB</TD><TD>Onbekend recht</TD></TR>
+</TABLE>
